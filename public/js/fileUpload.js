@@ -53,7 +53,8 @@ function categorize() {
             data: filething//makeblob( URL.createObjectURL(filething))
         })
         .done(function(data) {
-            console.log("coolio");
+            alert(JSON.stringify(data["tags"]));
+            console.log(data);
         })
         .fail(function() {
             alert("Error creating tags");
