@@ -52,3 +52,12 @@
 .hideItem {
 	display: none;
 }
+
+#file-form{
+	margin-top:20px;
+	
+}
+
+#upload-button{
+	margin-top:10px;
+}
