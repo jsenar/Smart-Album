@@ -11,9 +11,14 @@
 	<link href="css/bootstrap.css" rel="stylesheet"></link>
 	<link href="css/bootstrap-theme.css" rel="stylesheet"></link>
 	<link href="css/smartalbum.css" rel="stylesheet"></link>
-	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"></link>
-	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	
+	<!--<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+	<script src="js/jquery.min.js"></script>
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"></link>
+	<script src="js/bootstrap.min.js"></script>
+
+
 </head>
 
 <body>
@@ -49,6 +54,20 @@
         </a>
 					
 	</div>
+
+	<div class="modal fade" id="getCodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" id="myModalLabel">Tags Generated:</h4>
+       </div>
+       <div class="modal-body" id="getCode" style="overflow-x: scroll;">
+
+       </div>
+    </div>
+   	</div>
+ 	</div>
 
 	<script src="js/fileUpload.js"></script>
 
