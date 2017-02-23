@@ -11,42 +11,48 @@
 	<link href="css/bootstrap-theme" rel="stylesheet"></link>
 	<link href="css/smartalbum.css" rel="stylesheet"></link>
 	<link href="css/lightgallery.css" rel="stylesheet"></link>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+	<back
+
 </head>
-<body>
+<body background="images/background.png">
 
 <div class="container">
 	
 
-	<div class="container">
+	<div class="container login-title">
 		<div class="row">
 			<div class="col-xs-12">
-				<h2 align="center">Create Account</h2>
+				<h1 align="center">Smart Album</h1>
 			</div>
 		</div>
 	</div>
 
+	<div class = "container login-login">
+		<button type="button" class="btn btn-link login-btn">Login</button>
+		<button type="button" class="btn btn-link create-acct-btn">Create Account</button>
+	</div>
+
 	<div class = "container row vertical-center">
+
 		<div class = "col-xs-12">
 			<form>
-				<div class = "form-group">
-					<label font-weight="200">Email</label>
-					<input type="Email" name="loginEmail" placeholder="Enter Email">
+				<div class = "form-group login-textfields">
+					<input type="Email" class = "form-control" name="loginEmail" placeholder="Email">
 				</div>
-				<div class = "form-group">
-					<label>Password</label>
-					<input type="Password" name="loginEmail" placeholder="Enter password">
+				<div class = "form-group login-textfields">
+					<input type="Password" class = "form-control" name="loginEmail" placeholder="Password">
 				</div>
 			</form>	
 		</div>
-	
-		<div class = "col-xs-12">
-			<div align="center">
-				<a href="permissions">
-				<button type="button" class="btn btn-default btn-lg topPadding">Next</button>
-				</a>
-			</div>
-		</div>
+
 	</div>	
+	<div class = "container login-continue">
+	<a href="index" float = "right">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	</a>
+	</div>
 
 </div>
 
