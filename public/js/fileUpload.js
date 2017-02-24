@@ -1,5 +1,5 @@
 
-
+// Shows thumbnail of selected images
 $("#file-select").change(function(e) {
  function initOnReaderLoaded(img, reader){
     return function(){
@@ -32,6 +32,7 @@ $("#file-select").change(function(e) {
      //container.appendChild(div);
 } });
 
+// Handles Vision and Face API Logic
 function categorize() {
     var params = {
         // Request parameters
@@ -39,7 +40,7 @@ function categorize() {
 
     var filething = document.getElementById('file-select').files[0];
 
-
+    // Get image tags with vision API
     $.ajax({
         url: "https://westus.api.cognitive.microsoft.com/vision/v1.0/tag?" + $.param(params),
         beforeSend: function(xhrObj){
@@ -72,6 +73,7 @@ function categorize() {
             alert("Error creating tags");
         });
 
+    // Detect Faces and Identify if possible
     var a1 = $.ajax({
             url: "https://westus.api.cognitive.microsoft.com/face/v1.0/detect?" + $.param(params),
             beforeSend: function(xhrObj){
