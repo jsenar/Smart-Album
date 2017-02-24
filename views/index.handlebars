@@ -118,6 +118,26 @@
 
 	
 	<br>
+  
+	<div class="container">
+		<div class="row">
+			<!--div class="btn-toolbar"-->
+				<!--div class="bottomButton"-->
+					<div align="center" class="col-xs-6">	
+						<button id="voice" type="button"
+						class="btn btn-default btn-lg"
+						data-toggle="modal"
+						data-target="#voiceModal">Voice</button>
+					</div>
+					<div align="center" class="col-xs-6">
+						<button id="share" type="button"
+						class="btn btn-default btn-lg"
+						data-toggle="modal"
+						data-target="#shareModal">Share</button>
+					</div>
+				<!--/div-->
+			<!--/div-->			
+      
 	<div class="container" id="bottomButton">
 		<div class = "row">
 			<div class = "col-xs-6">
@@ -129,18 +149,35 @@
 			<div class = "col-xs-6">
 				<a href="upload" class="btn btn-default btn-fab" style = "float: right;"><i class="material-icons">add</i></a>
 			</div>
-			
 		</div>
 	</div>
 
-	<!-- Filter Dropdown -->
-
+	<!-- Voice Modal -->
+        <div id="voiceModal" class="modal fade">
+	   <div class="modal-content">
+	      <div class="modal-body">
+	         <button type="button" class="close"
+		 data-dismiss="modal">x</button>
+	      	 <p>Press the Record button and then speak!</p>
+		 <p>Ex: Add photos with tags Andrew and John.</p>
+		 <p id="STToutput"></p>
+	      </div>
+	      <div align="center" class="modal-footer">
+	         <button id="voiceRecordBtn" type="button" class="btn
+		 btn-default">Record</button>
+		 <button id="stopRecord" type="button" class="btn
+		 btn-default">Stop</button>
+	      </div>
+	   </div>	
+	</div> 
 
 	<!-- Filter Modal -->
 	<div id="filterModal" class="modal fade">
 	   <div class="modal-content">
 	      <div class="modal-body">
-	      	 <p>Shows images at least one of the selected tags!</p>
+	         <button type="button" class="close"
+		 data-dismiss="modal">x</button>
+	      	 <p>Shows images with at least one of the selected tags!</p>
 		 {{#each uniqueTags}}
 		 <!-- filtering indiviual tag elements need logic work -->
 	         <div class="checkbox">
@@ -150,10 +187,10 @@
 		 </div>
 		 {{/each}}
 	      </div>
-	      <!--div align="center" class="modal-footer">
-	         <input type="submit" class="btn btn-default btn-block"
-		 value="Share" data-dismiss="modal"></input>
-	      </div-->
+	      <div align="center" class="modal-footer">
+	         <button type="button" class="btn btn-default"
+		 data-dismiss="modal">Filter</input>
+	      </div>
 	   </div>	
 	</div>  
 
@@ -216,6 +253,8 @@
     });
 	</script>
 	<script src="js/filterHelper.js"></script>
+	<script src="js/speech.1.0.0.js"></script>
+	<script src="js/stt.js"></script>
 
 	</body>
 

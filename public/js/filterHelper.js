@@ -23,6 +23,29 @@ function filterImages(e) {
 	}
 }
 
+function filterImagesVoice(tagsArray) {
+	console.log("filtering from voice input");
+	var matchedTag = false;
+	for (var i = 0; i < checkBoxes.length; i++) {
+            // if voice tag is a valid filter tag, mark as checked + show image
+	    console.log(checkBoxes[i].value);
+	    console.log(tagsArray);
+	    // get checkbox tags, match to lowercase on compare
+	    if (tagsArray.indexOf(checkBoxes[i].value.toLowerCase()) >= 0) {
+                checkBoxes[i].checked = true;
+		hideOrShowItems(checkBoxes[i].value, "hideItem", "showItem");
+		matchedTag = true;
+	    }
+	}
+
+	if (matchedTag) {
+           document.getElementById("STToutput").innerHTML += ("\n" + "I managed to find images with what you said. Close this menu to check them out!");
+	}
+	else {
+           document.getElementById("STToutput").innerHTML += ("\n" + "I am sorry. I was unable to find any pictures with what you said.");
+	}
+}
+
 // add or remove classes to show/hide the images
 function hideOrShowItems(itemType, classToRemove, classToAdd) {
 	var i, j, k;
