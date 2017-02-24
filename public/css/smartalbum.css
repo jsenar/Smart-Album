@@ -1,7 +1,13 @@
-.bottomButton {
-	position: fixed;
+body {
+	background-color: #000 !important;
+	font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+#bottomButton {
+	position: absolute;
 	bottom: 0;
-	height: 5%;
+	width: 90vw;
+	width: 90%;
 }
 
 #voice {
@@ -14,29 +20,190 @@
 	position: fixed;
 	bottom: 0;
 	margin-bottom: 20px;
+	border-radius: 50px;
 }
 
+/* Login page */
+
+.login-title {
+	margin-top: 40vh;
+	margin-top: 40%;
+	display: flex;
+	padding-left: 0;
+}
+
+.login-title h1 {
+	font-weight: 300;
+	color: #fff;
+}
+
+.login-login {
+	margin-top: 75px;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+}
+
+/* need to add focus to login button, current hack to make blue*/
+.login-btn {
+	float: left;
+	color: #2391d3;
+	font-weight: 100;
+	width: 50%;
+	text-align: left;
+	font-size: medium;
+}
+
+.login-btn:target {
+	color: blue;
+}
+
+.create-acct-btn {
+	float: right;
+	color: #fff;
+	font-weight: 200;
+	width: 50%;
+	text-align: left;
+	font-size: medium;
+}
+
+.login-textfields {
+	background-color: #fff;
+	opacity: .4;
+	border-radius: 5px 5px 5px 5px;
+	font-weight: 200;
+}
+
+.login-textfields:focus {
+	color: #2391d3;
+}
+
+.login-continue {
+	border-bottom: 1px solid #2391d3;
+	color: #2391d3;
+}
+
+.login-continue a {
+	float: right;
+}
+
+.vertical-center {
+   display: flex;
+   align-items: center;
+   padding-left: 0;
+   margin-top: 3vh;
+}
 
 .topPadding {
 	margin-top: 20px;
 }
 
 
-.vertical-center {
-  min-height: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
+
 
 .permissions-btn:focus {
 	background: #3DFF51;
 }
 
+/* Homescreen */
+
+.homescreen-header {
+	height: 10vh;
+	height: 10%;
+	border-bottom: 1px solid #fff;
+}
+
+.homescreen-header h2 {
+	font-weight: 100;
+	color: #fff;
+	margin: 5px;
+}
+
+#homescreen-container {
+	position: relative;
+	height: 90vh;
+}
+
+#homescreen-header-btn {
+	background-color: #000;
+	color: #fff;
+	margin-top: 0;
+	font-weight: 300;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#homescreen-header-btn:active {
+	border: none;
+}
+
+#floating-btn {
+	position: fixed;
+	border-radius: 75px;
+}
+
+/* Side Menu */
+
+.side-menu {
+	height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    background-image: url("../images/background.png");
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s;
+}
+
+.side-menu a {
+	padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.side-menu .closebtn {
+	position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .side-menu {padding-top: 15px;}
+    .side-menu a {font-size: 18px;}
+}
+
+/* Share Modal */
 #shareModal {
-	margin-top: 5%;
+	margin-top: 25%;
 	margin-left: 5%;
 	margin-right: 5%;
+}
+
+#shareModalContent {
+	color: #2391d3 !important;
+}
+
+.shareForm input {
+	color: #fff;
+}
+
+.confirmShare-btn {
+	border-bottom: 1px solid #fff !important;
+	color: #fff !important;
+	padding-right: 24px;
+	padding-left: 24px;
+}
+
+.modal-header h3 {
+	color: #fff;
+	font-weight: 100;
 }
 
 #filterModal {

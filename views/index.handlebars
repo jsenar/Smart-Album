@@ -8,24 +8,45 @@
 
     <title>Smart Album</title>
 
+     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 	<link href="css/bootstrap.css" rel="stylesheet"></link>
 	<link href="css/bootstrap-theme.css" rel="stylesheet"></link>
 	<link href="css/smartalbum.css" rel="stylesheet"></link>
 	<link href="css/lightgallery.css" rel="stylesheet"></link>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-material-design.css">
+  <link rel="stylesheet" type="text/css" href="css/ripples.min.css">
 </head>
 
 <body>
 	
+	<div class = "side-menu" background = "images/background.png" id="menu">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<div class = "row">
+			<div class = "col-xs-12">
+				<div class="list-group">
+					<div class = "list-group-item">
+						<div class = "row-picture">
+							<img class = "circle" src="http://lorempixel.com/56/56/people" alt="icon">
+						</div>
+						<div class = "row-content">
+							<h4 style="color: #fff">Chad Bettencourt</h4>
+							<p style=" color: #fff">
+								chadbet@gmail.com
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	
-	<div class="container">
+	<div class="container homescreen-header">
 		<div class="row">
-			<div align="center" class="col-xs-4">
-
-				<button class="btn btn-default btn-lg
-				topPadding" data-toggle="modal"
-				data-target="#filterModal">Filter</button>
-		            
+			<div align="left" class="col-xs-4">
+				<a data-toggle="modal" data-target = "#filterModal" class = "btn-default">
+					<i class="material-icons" style = "color: #fff; background-color: #000">search</i>
+				</a>
 			     <!-- Filter Dropdown button with checkboxes -->
 				<!--div class="button-group">
 				<div align="left" class="dropdown">
@@ -60,9 +81,9 @@
 			<div class="col-xs-4">
 				<h2 align="center">Photos</h2>
 			</div>
-			<div align="center" class="col-xs-4">
-				<a href="upload">
-				<button type="button" class="btn btn-default btn-lg topPadding">Upload</button>
+			<div align="right" class="col-xs-4">
+				<a data-toggle="modal" data-target = "#shareModal" class = "btn-default">
+					<i class="material-icons" style = "color: #fff; background-color: #000">share</i>
 				</a>
 			</div>
 		</div>
@@ -78,6 +99,8 @@
 			{{/each}}
 	    </div>
 	 </div>-->
+	 <div class="container" id="homescreen-container">
+
 	 <div class="container">
 	 <div class="row" id="lightgallery">
 	 	{{#each images}}
@@ -95,21 +118,18 @@
 
 	
 	<br>
-	<div class="container">
-		<div class="row">
-			<!--div class="btn-toolbar"-->
-				<!--div class="bottomButton"-->
-					<div align="center" class="col-xs-6">	
-						<button id="voice" type="button" class="btn btn-default btn-lg">Voice</button>
-					</div>
-					<div align="center" class="col-xs-6">
-						<button id="share" type="button"
-						class="btn btn-default btn-lg"
-						data-toggle="modal"
-						data-target="#shareModal">Share</button>
-					</div>
-				<!--/div-->
-			<!--/div-->			
+	<div class="container" id="bottomButton">
+		<div class = "row">
+			<div class = "col-xs-6">
+				<a class="btn btn-default btn-fab test"><i class="material-icons">keyboard_voice</i>
+					<span onclick="openNav()">Open</span>
+				</a>
+			</div>
+
+			<div class = "col-xs-6">
+				<a href="upload" class="btn btn-default btn-fab" style = "float: right;"><i class="material-icons">add</i></a>
+			</div>
+			
 		</div>
 	</div>
 
@@ -139,34 +159,56 @@
 
 
 	<!-- Share Modal -->
-	<div id="shareModal" class="modal fade">
-	   <div class="modal-content">
-	      <div class="modal-header">
-	         <button type="button" class="close"
-		 data-dismiss="modal">x</button>
-		 <h3 class="modal-title">Share</h3>
-	      </div>
-	      <div class="modal-body">
-		 <div class="form-group">
-		    <label for="name">Name</label>
-		    <input type="text" class="form-control" id="name"
-		    placeholder="Name" name="name">
-		 </div>
-		 <div class="form-group">
-		    <label for="email">Email</label>
-		    <input type="text" class="form-control" id="email"
-		    placeholder="email@email.com" name="email">
-		 </div>
-	      </div>
-	      <div align="center" class="modal-footer">
-	         <input type="submit" class="btn btn-default btn-block"
-		 value="Share" data-dismiss="modal"></input>
-	      </div>
-	   </div>	
+	<div class="modal" id="shareModal">
+  		<div class="modal-dialog">
+    		<div class="modal-content" style="background-color:#2391d3; color: #fff">
+      		<div class="modal-header">
+        		<button type="button" class="close" style="color: #fff; opacity: 1; font-weight: 400" data-dismiss="modal" aria-hidden="true">x</button>
+        		<h3 class="modal-title">Share</h3>
+      		</div>
+      		<div class="modal-body">
+        		<form class = "form-horizontal">
+        			<fieldset>
+        				<div class = "form-group" style="margin-top: 0;">
+        					<div class = "col-xs-12">
+        						<input type="Email" class = "form-control" placeholder="Email" name="Email" style="color: #fff">
+        					</div>
+        				</div>
+        				<div class = "form-group" style="margin-top: 0;">
+        					<div class = "col-xs-12">
+        						<input type="Password" class = "form-control" placeholder="Password" name="Password" style="color: #fff">
+        					</div>
+        				</div>
+        			</fieldset>
+        		</form>
+      		</div>
+      		<div class="modal-footer">
+        		<div class = "container confirmShare-btn">
+					<a data-dismiss="modal" float = "right">
+						<span class="glyphicon glyphicon-chevron-right" style="color: #fff" aria-hidden="true"></span>
+					</a>
+			</div>
+      		</div>
+    	</div>
+  </div>
+</div>	
+	
+
 	</div>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.js"></script>
+	<script>
+		function openNav() {
+			document.getElementById("menu").style.width = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("menu").style.width = "0";
+		}
+	</script>
+	<script type="text/javascript" src="js/mdb.min.js"></script>
+	<script type="text/javascript" src = "js/bootstrap-material-design.js"></script>
 	<script src="js/lightgallery.min.js"></script>
 	<script type="text/javascript">
     $(document).ready(function() {
