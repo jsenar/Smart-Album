@@ -11,6 +11,8 @@
 	<link href="css/bootstrap.css" rel="stylesheet"></link>
 	<link href="css/bootstrap-theme.css" rel="stylesheet"></link>
 	<link href="css/smartalbum.css" rel="stylesheet"></link>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-material-design.css"></link>
+  	<link rel="stylesheet" type="text/css" href="css/ripples.min.css"></link>
 	
 	<!--<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
 	<script src="js/jquery.min.js"></script>
@@ -23,11 +25,11 @@
 
 <body>
 	
-	<div class="container">
+	<div class="container upload-header">
 		<div class="row">
-			<div align="center" class="col-xs-4">
-				<a href="index">
-				<button class="btn btn-default btn-lg topPadding"><span class="glyphicon glyphicon-chevron-left"></span> Gallery</button>
+			<div align="left" class="col-xs-4" id="uploadHeaderBtn">
+				<a href="index" class="btn-default">
+					<i class="material-icons" style = "color: #fff; background-color: #000">Back</i>
 				</a>
 			</div>
 			<div class="col-xs-4">
@@ -38,8 +40,8 @@
 	
 	<div class="container">
 		<div class="row">
-		<form id="file-form">
-  			<input type="file" id="file-select" accept="image/*" name="photos[]"> 
+		<form id="file-form" align = "center">
+  			<input type="file" name = "file" placeholder="Choose a file" style="color: #fff;" id="file-select" accept="image/*" name="photos[]">
 			<!-- TODO: add multiple input -->
 		</form>	
 		</div>
@@ -49,7 +51,7 @@
 	<div class="container">
 		<a data-toggle="modal">
         	<div align="center" class="col-xs-8">	
-						<button id="voice" type="button" onclick="categorize()" class="btn btn-default btn-lg">Categorize Me!</button>
+						<button id="uploadHeaderBtn" type="button" onclick="categorize()" class="btn btn-default btn-lg">Categorize Me!</button>
 			</div>
                
         </a>
