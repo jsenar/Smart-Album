@@ -107,6 +107,7 @@ body {
 /* Homescreen */
 
 .homescreen-header {
+	position: relative;
 	height: 10vh;
 	height: 10%;
 	border-bottom: 1px solid #fff;
@@ -124,12 +125,12 @@ body {
 }
 
 #homescreen-header-btn {
+	transform: translateY(50%);
 	background-color: #000;
 	color: #fff;
-	margin-top: 0;
 	font-weight: 300;
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 #homescreen-header-btn:active {
@@ -206,6 +207,30 @@ body {
 	font-weight: 100;
 }
 
+/* Voice Modal */
+
+#voiceModal {
+	margin-top: 25%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+#voiceRecordBtn {
+	color: #fff;
+	text-transform: lowercase;
+	text-transform: capitalize;
+	font-weight: 100;
+}
+
+#stopRecord {
+	color: #fff;
+	text-transform: lowercase;
+	text-transform: capitalize;
+	font-weight: 100;
+}
+
+/* Filter Modal */
+
 #filterModal {
 	margin-top: 5%;
 	margin-left: 5%;
@@ -227,4 +252,32 @@ body {
 
 #upload-button{
 	margin-top:10px;
+}
+
+.filter-container {
+
+}
+
+/* Upload Page */
+
+.upload-header {
+    position: relative;
+	height: 10vh;
+	height: 10%;
+	border-bottom: 1px solid #fff;
+}
+
+.upload-header h2 {
+	font-weight: 100;
+	color: #fff;
+	margin: 5px;
+}
+
+#uploadHeaderBtn {
+	transform: translateY(50%);
+	background-color: #000;
+	color: #fff;
+	font-weight: 200;
+	padding-left: 10px;
+	padding-right: 10px;
 }
