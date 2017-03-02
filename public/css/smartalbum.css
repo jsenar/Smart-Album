@@ -1,13 +1,12 @@
 body {
-	background-color: #000 !important;
 	font-family: 'Roboto', 'Helvetica Neue', sans-serif;
 }
 
 #bottomButton {
-	position: absolute;
-	bottom: 0;
-	width: 90vw;
-	width: 90%;
+	position: fixed;
+	bottom: 10px;
+	width: 100vw;
+	width: 100%;
 }
 
 #voice {
@@ -24,6 +23,11 @@ body {
 }
 
 /* Login page */
+
+.login-body {
+	background-color: #080808 !important;
+	height: 100vh;
+}
 
 .login-title {
 	margin-top: 40vh;
@@ -106,16 +110,40 @@ body {
 
 /* Homescreen */
 
+.homescreen-body {
+	background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+	background-size: 100% 100%;
+    -webkit-animation: rainbow 8s ease infinite;
+    -z-animation: rainbow 8s ease infinite;
+    -o-animation: rainbow 8s ease infinite;
+    animation: rainbow 8s ease infinite;
+}
+
 .homescreen-header {
-	position: relative;
-	height: 10vh;
-	height: 10%;
-	border-bottom: 1px solid #fff;
+	position: fixed;
+	width: 100vw;
+	background-color: #fff;
+	opacity: .8;
+}
+
+.rainbow {
+	background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+	background-size: 100% 100%;
+    -webkit-animation: rainbow 8s ease infinite;
+    -z-animation: rainbow 8s ease infinite;
+    -o-animation: rainbow 8s ease infinite;
+    animation: rainbow 8s ease infinite;
+}
+
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
 }
 
 .homescreen-header h2 {
 	font-weight: 100;
-	color: #fff;
+	color: #000;
 	margin: 5px;
 }
 
@@ -126,11 +154,12 @@ body {
 
 #homescreen-header-btn {
 	transform: translateY(50%);
-	background-color: #000;
+	background-color: #fff;
 	color: #fff;
 	font-weight: 300;
 	padding-left: 10px;
 	padding-right: 10px;
+	opacity: .8;
 }
 
 #homescreen-header-btn:active {
@@ -142,19 +171,28 @@ body {
 	border-radius: 75px;
 }
 
+#lg-frames {
+	border: 1px solid #fff;
+}
+
+.imagesToFilter {
+	padding: 0;
+	margin: 0;
+}
+
 /* Side Menu */
 
 .side-menu {
-	height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+	height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
     top: 0;
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: #111;
     background-image: url("../images/background.png");
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
+    overflow-x: hidden;
+    padding-top: 60px;
     transition: 0.5s;
 }
 
@@ -164,7 +202,8 @@ body {
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s
+    transition: 0.3s;
+    z-index: 3;
 }
 
 .side-menu .closebtn {
@@ -178,6 +217,93 @@ body {
 @media screen and (max-height: 450px) {
     .side-menu {padding-top: 15px;}
     .side-menu a {font-size: 18px;}
+}
+
+.block {
+}
+
+.tags h5 {
+	color: #fff;
+	font-weight: 100;
+}
+
+.tags pre {
+	border-radius: 3px;
+	color: #000;
+	opacity: .8;
+	height: 400px;
+}
+
+.taggle {
+	border: 1px solid #000;
+	padding: 0;
+}
+
+.taggle_list {
+	float: left;
+	width: 50%;
+	padding:0;
+	width: 100%;
+}
+
+.taggle_text {
+	font: 'Roboto', "Helvetica"!important;
+	font-weight: 200;
+	float: left;
+}
+
+button.close {
+	color: red;
+	float: right;
+}
+
+.taggle_input {
+	position: relative;
+	cursor: default;
+	outline: 0;
+	font-size: 16;
+	font-weight: 200;
+	border-radius: 3px;
+	float: left;
+}
+
+.taggle_list li {
+	float: left;
+	display: inline-block;
+	white-space: nowrap;
+	margin-bottom: 5px;
+	font-weight: 200;
+}
+
+.taggle_list .taggle {
+	margin-right: 8px;
+	padding: 5px 5px;
+	border-radius: 3px;
+	position: relative;
+	cursor: pointer;
+	transition: all .3s;
+	-webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.taggle_input {
+	padding:8px;
+	padding-left: 0;
+	float: left;
+	margin-top: -5px;
+	background: none;
+	width: 100%;
+	max-width: 100%;
+}
+
+.taggle_sizer {
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	z-index: -1;
+	visibility: hidden;
 }
 
 /* Share Modal */

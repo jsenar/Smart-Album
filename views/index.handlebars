@@ -15,10 +15,12 @@
 	<link href="css/smartalbum.css" rel="stylesheet"></link>
 	<link href="css/lightgallery.css" rel="stylesheet"></link>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-material-design.css">
-  <link rel="stylesheet" type="text/css" href="css/ripples.min.css">
+  	<link rel="stylesheet" type="text/css" href="css/ripples.min.css">
+  	<link rel="stylesheet" type="text/css" href="css/lightbox.min.css">
+
 </head>
 
-<body>
+<body class="homescreen-body">
 	
 	<div class = "side-menu" background = "images/background.png" id="menu">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -39,36 +41,23 @@
 				</div>
 			</div>
 		</div>
-		<div id="filterModal" class="container filter-container">
-		<div class="row">
-			<form class="form-horizontal">
-				<fieldset>
-					
-					<button type="button" class="close"
-		 			data-dismiss="modal">x</button>
-	      	 			<p style="color: #fff;">Shows images with at least one of the selected tags!</p>
-						 {{#each uniqueTags}}
-		 <!-- filtering indiviual tag elements need logic work -->
-	         		<div class="checkbox">
-		    		<label>
-		    			<input type="checkbox" value="{{this}}"
-		   			 	data-type="{{this}}">{{this}}</label>
-					 </div>
-		 				{{/each}}
-	      			</div>
-	      			
-				</fieldset>
-			</form>
-		</div>
+		<div class = 'tags'>
+		<article class="block">
+            <h5>Enter tags below to filter pictures</h5>
+        </article>
+        <article class="block" style="height: 400px;">
+            <pre >
+		<div id="example1"></div>
+        </article>			
 		</div>
 	</div>
 
-	<div class="container homescreen-header">
-		<div class="row">
+	<div class="container">
+		<div class="row homescreen-header" style="z-index: 1; position: fixed;" >
 			<div align="left" class="col-xs-4" id="homescreen-header-btn">
 			<span onclick="openNav()">
 				<a class = "btn-default">
-					<i class="material-icons" style = "color: #fff; background-color: #000">search</i>
+					<i class="material-icons" style = "color: #000; background-color: #fff">search</i>
 				</a>
 				</span>
 			     <!-- Filter Dropdown button with checkboxes -->
@@ -107,7 +96,7 @@
 			</div>
 			<div align="right" class="col-xs-4" id="homescreen-header-btn">
 				<a data-toggle="modal" data-target = "#shareModal" class = "btn-default">
-					<i class="material-icons" style = "color: #fff; background-color: #000">share</i>
+					<i class="material-icons" style = "color: #000; background-color: #fff">share</i>
 				</a>
 			</div>
 		</div>
@@ -123,37 +112,23 @@
 			{{/each}}
 	    </div>
 	 </div>-->
-	 <div class="container" id="homescreen-container">
+	 <div class="container rainbow" style="margin-top: 45px;" id="pig">
 
-	 <div class="container">
-	 <div class="row" id="lightgallery">
-	 	{{#each images}}
-	 	<!--TODO: Make the caption for the tags look nicer-->
-  		<a href={{imageURL}} data-sub-html={{tags}}>
-  			<div class="col-xs-4 topPadding imagesToFilter"
-			data-type="{{tags}}">
-      		<img src={{imageURL}} class="img-responsive">
-      		</div>
-  		</a>
-	  	
-  		{{/each}}
-	</div>
-	</div>
-
+	 </div>
 	
 	<br>	
       
-	<div class="container" id="bottomButton">
-		<div class = "row">
+	<div class="container" >
+		<div class = "row" id="bottomButton">
 			<div class = "col-xs-6">
-				<a class="btn btn-default btn-fab test" data-toggle="modal"
+				<a class="btn btn-default btn-fab" style="background-color: #fff;" data-toggle="modal"
 						data-target="#voiceModal"><i class="material-icons">keyboard_voice</i>
 					
 				</a>
 			</div>
 
 			<div class = "col-xs-6">
-				<a href="upload" class="btn btn-default btn-fab" style = "float: right;"><i class="material-icons">add</i></a>
+				<a href="upload" class="btn btn-default btn-fab"  style = "float: right; background-color: #fff;"><i class="material-icons">add</i></a>
 			</div>
 		</div>
 	</div>
@@ -237,8 +212,6 @@
 </div>	
 	
 
-	</div>
-
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script>
@@ -252,11 +225,54 @@
 	</script>
 	<script type="text/javascript" src="js/mdb.min.js"></script>
 	<script type="text/javascript" src = "js/bootstrap-material-design.js"></script>
+	<script src = "js/pig.js"></script>
+	<script type="text/javascript">
+		var images = [
+			{filename: 'andrew.jpg', aspectRatio:1.33},
+			{filename: 'bridge.JPG', aspectRatio:1.33},
+			{filename: 'chad.jpg', aspectRatio:1.33},
+			{filename: 'fish.JPG', aspectRatio:.75},
+			{filename: 'john.jpg', aspectRatio:1.33},
+			{filename: 'laptop.jpg', aspectRatio:1.33},
+			{filename: 'statue.JPG', aspectRatio:.75},
+			{filename: 'sunrise.JPG', aspectRatio:1.33},
+
+			{filename: 'temple.JPG', aspectRatio:1.33},
+			{filename: 'view.JPG', aspectRatio:1.33},
+		];
+
+		var pig = new Pig(images, {
+
+			thumbnailSize:1,	
+			spaceBetweenImages:2,
+			containerID:'pig',		
+			urlForSize: function(filename, size) {
+				return 'img/' + size + '/' + filename;
+			}
+		}).enable();
+
+	</script>
+
 	<script src="js/lightgallery.min.js"></script>
 	<script type="text/javascript">
     $(document).ready(function() {
         $("#lightgallery").lightGallery(); 
     });
+	</script>
+	<script src = "js/lightbox.js"></script>
+	<script>
+		lightbox.option( {
+			'imageFadeDuration': 400,
+			'positionFromTop': 200,
+			'wrapAround': true
+		})
+	</script>
+	<script src = "js/taggle.js"></script>
+	<script type="text/javascript">
+	
+		new Taggle('example1', {
+			tags:['andrew', 'john']
+		});
 	</script>
 	<script src="js/filterHelper.js"></script>
 	<script src="js/speech.1.0.0.js"></script>
