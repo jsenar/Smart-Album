@@ -82,7 +82,9 @@
 				<h2 align="center">Photos</h2>
 			</div>
 			<div align="right" class="col-xs-4">
-				<a data-toggle="modal" data-target = "#shareModal" class = "btn-default">
+				<a data-toggle="modal" data-target =
+				"#shareModal" class = "btn-default"
+				id="shareBtn">
 					<i class="material-icons" style = "color: #fff; background-color: #000">share</i>
 				</a>
 			</div>
@@ -106,7 +108,7 @@
 	 	{{#each images}}
 	 	<!--TODO: Make the caption for the tags look nicer-->
   		<a href={{imageURL}} data-sub-html={{tags}}>
-  			<div class="col-xs-4 topPadding imagesToFilter"
+  			<div class="col-xs-4 topPadding imagesToFilter showItem"
 			data-type="{{tags}}">
       		<img src={{imageURL}} class="img-responsive">
       		</div>
@@ -255,6 +257,7 @@
 	<script src="js/filterHelper.js"></script>
 	<script src="js/speech.1.0.0.js"></script>
 	<script src="js/stt.js"></script>
+	<script src="js/shareHelper.js"></script>
 
 	</body>
 
