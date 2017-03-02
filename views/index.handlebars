@@ -210,20 +210,42 @@
         			<fieldset>
         				<div class = "form-group" style="margin-top: 0;">
         					<div class = "col-xs-12">
-        						<input type="Email" class = "form-control" placeholder="Email" name="Email" style="color: #fff">
+        						<input id="email"
+							type="Email" class =
+							"form-control"
+							placeholder="Email"
+							name="Email" style="color: #fff">
         					</div>
         				</div>
         				<div class = "form-group" style="margin-top: 0;">
         					<div class = "col-xs-12">
-        						<input type="Password" class = "form-control" placeholder="Password" name="Password" style="color: #fff">
+        						<input id="subject"
+							type="text" class =
+							"form-control"
+							placeholder="Subject"
+							name="Subject" style="color: #fff">
+        					</div>
+        				</div>
+					<div class = "form-group" style="margin-top: 0;">
+        					<div class = "col-xs-12">
+        						<input id="message"
+							type="text" class =
+							"form-control"
+							placeholder="Message"
+							name="Message" style="color: #fff">
         					</div>
         				</div>
         			</fieldset>
         		</form>
       		</div>
       		<div class="modal-footer">
-        		<div class = "container confirmShare-btn">
-					<a data-dismiss="modal" float = "right">
+        		<div>
+                           <button id="applyShare" class="btn
+			   btn-default">Apply</button>
+			</div>
+		        <div class = "container confirmShare-btn">
+					<a href="#"
+					id="confirmShare" float = "right">
 						<span class="glyphicon glyphicon-chevron-right" style="color: #fff" aria-hidden="true"></span>
 					</a>
 			</div>
