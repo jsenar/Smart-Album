@@ -94,8 +94,9 @@
 			<div class="col-xs-4">
 				<h2 align="center">Photos</h2>
 			</div>
+
 			<div align="right" class="col-xs-4" id="homescreen-header-btn">
-				<a data-toggle="modal" data-target = "#shareModal" class = "btn-default">
+				<a data-toggle="modal" data-target = "#shareModal" class = "btn-default" id="shareBtn">
 					<i class="material-icons" style = "color: #000; background-color: #fff">share</i>
 				</a>
 			</div>
@@ -112,8 +113,10 @@
 			{{/each}}
 	    </div>
 	 </div>-->
-	 <div class="container rainbow" style="margin-top: 45px;" id="pig">
 
+	 
+
+	 <div class="container rainbow" style="margin-top: 45px;" id="pig">
 	 </div>
 	
 	<br>	
@@ -189,20 +192,42 @@
         			<fieldset>
         				<div class = "form-group" style="margin-top: 0;">
         					<div class = "col-xs-12">
-        						<input type="Email" class = "form-control" placeholder="Email" name="Email" style="color: #fff">
+        						<input id="email"
+							type="Email" class =
+							"form-control"
+							placeholder="Email"
+							name="Email" style="color: #fff">
         					</div>
         				</div>
         				<div class = "form-group" style="margin-top: 0;">
         					<div class = "col-xs-12">
-        						<input type="Password" class = "form-control" placeholder="Password" name="Password" style="color: #fff">
+        						<input id="subject"
+							type="text" class =
+							"form-control"
+							placeholder="Subject"
+							name="Subject" style="color: #fff">
+        					</div>
+        				</div>
+					<div class = "form-group" style="margin-top: 0;">
+        					<div class = "col-xs-12">
+        						<input id="message"
+							type="text" class =
+							"form-control"
+							placeholder="Message"
+							name="Message" style="color: #fff">
         					</div>
         				</div>
         			</fieldset>
         		</form>
       		</div>
       		<div class="modal-footer">
-        		<div class = "container confirmShare-btn">
-					<a data-dismiss="modal" float = "right">
+        		<div>
+                           <button id="applyShare" class="btn
+			   btn-default">Apply</button>
+			</div>
+		        <div class = "container confirmShare-btn">
+					<a href="#"
+					id="confirmShare" float = "right">
 						<span class="glyphicon glyphicon-chevron-right" style="color: #fff" aria-hidden="true"></span>
 					</a>
 			</div>
@@ -249,7 +274,7 @@
 			urlForSize: function(filename, size) {
 				return 'img/' + size + '/' + filename;
 			}
-		}).disable();
+		}).enable();
 
 	</script>
 
@@ -277,6 +302,7 @@
 	<script src="js/filterHelper.js"></script>
 	<script src="js/speech.1.0.0.js"></script>
 	<script src="js/stt.js"></script>
+	<script src="js/shareHelper.js"></script>
 
 	</body>
 
