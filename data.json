@@ -15,27 +15,27 @@
 		{
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/20170212_140523.jpg",
 			"tags": ["John"]
-		}
+		},
 		{
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/bridge.JPG",
 			"tags": ["Water", "Bridge"]
-		}
+		},
 		{
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/fish.JPG",
 			"tags": ["Fish"]
-		}
+		},
 		{
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/statue.JPG",
 			"tags": ["Statue", "Tree"]
-		}
+		},
 		{
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/sunrise.JPG",
 			"tags": ["Sun", "Building", "Bridge", "Water"]
-		}
+		},
 		{
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/temple.JPG",
 			"tags": ["Tree", "Building"]
-		}
+		},
 		{
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/view.JPG",
 			"tags": ["Sun", "Cloud"]
