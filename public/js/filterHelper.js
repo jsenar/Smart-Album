@@ -1,7 +1,26 @@
-console.log("connected");
+console.log("filterhelper connected");
 var imagesToFilter = document.querySelectorAll("#lightgallery .imagesToFilter");
 var checkBoxes = document.querySelectorAll("#filterModal .checkbox label input");
-var checkBoxMap = new Map();
+var tags = taggle.getTags();
+console.log(taggle.getTags());
+console.log(data);
+
+MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+// define what element should be observed by the observer
+// and what types of mutations trigger the callback
+var target = document.getElementByClassName("taggle_list");
+
+var observer = new MutationObserver(
+	function(mutations) {
+		searchTags();
+});
+ 
+// configuration of the observer:
+var config = { attributes: true, childList: true, characterData: true };
+ 
+// pass in the target node, as well as the observer options
+observer.observe(target, config);
 
 // setup click event handlers on filter checkboxes
 for (var i = 0; i < checkBoxes.length; i++) {

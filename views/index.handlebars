@@ -156,14 +156,13 @@
 	</div> 
 
 	<!-- Filter Modal -->
-	<div id="filterModal" class="modal fade">
+	<!--<div id="filterModal" class="modal fade">
 	   <div class="modal-content">
 	      <div class="modal-body">
 	         <button type="button" class="close"
 		 data-dismiss="modal">x</button>
 	      	 <p>Shows images with at least one of the selected tags!</p>
 		 {{#each uniqueTags}}
-		 <!-- filtering indiviual tag elements need logic work -->
 	         <div class="checkbox">
 		    <label>
 		    <input type="checkbox" value="{{this}}"
@@ -176,7 +175,7 @@
 		 data-dismiss="modal">Filter</input>
 	      </div>
 	   </div>	
-	</div>  
+	</div> --> 
 
 
 	<!-- Share Modal -->
@@ -295,9 +294,10 @@
 	<script src = "js/taggle.js"></script>
 	<script type="text/javascript">
 	
-		new Taggle('example1', {
+		taggle = new Taggle('example1', {
 			tags:['andrew', 'john']
 		});
+		console.log(taggle.getTags())
 	</script>
 	<script src="js/filterHelper.js"></script>
 	<script src="js/speech.1.0.0.js"></script>
