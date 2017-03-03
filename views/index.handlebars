@@ -252,9 +252,9 @@
 	<script src = "js/pig.js"></script>
 	<script type="text/javascript">
 		var images = [
-			{filename: 'andrew.jpg', aspectRatio:1.33},
-			{filename: 'bridge.JPG', aspectRatio:1.33},
-			{filename: 'chad.jpg', aspectRatio:1.33},
+			{filename: 'https://s3-us-west-1.amazonaws.com/smart-album/large/20170212_140511.jpg', aspectRatio:1.33},
+			{filename: 'https://s3-us-west-1.amazonaws.com/smart-album/large/bridge.JPG', aspectRatio:1.33},
+			/*{filename: 'chad.jpg', aspectRatio:1.33},
 			{filename: 'fish.JPG', aspectRatio:.75},
 			{filename: 'john.jpg', aspectRatio:1.33},
 			{filename: 'laptop.jpg', aspectRatio:1.33},
@@ -262,7 +262,7 @@
 			{filename: 'sunrise.JPG', aspectRatio:1.33},
 
 			{filename: 'temple.JPG', aspectRatio:1.33},
-			{filename: 'view.JPG', aspectRatio:1.33},
+			{filename: 'view.JPG', aspectRatio:1.33},*/
 		];
 
 		var pig = new Pig(images, {
@@ -271,7 +271,7 @@
 			spaceBetweenImages:2,
 			containerID:'pig',		
 			urlForSize: function(filename, size) {
-				return 'img/' + size + '/' + filename;
+				return /*'img/' + size + '/' +*/ filename;
 			}
 		}).enable();
 
