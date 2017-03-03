@@ -67,8 +67,7 @@ function categorize() {
             htmlData += '</p>';
             //$('#uploadModal').modal('show'); 
             //alert(JSON.stringify(data["tags"]));
-            $("#getCode").append(htmlData);
-            $("#getCodeModal").modal('show');
+            $("#uploadHeader").append(htmlData);
         })
         .fail(function() {
             alert("Error creating tags");
@@ -96,7 +95,7 @@ function categorize() {
             };
             if (data.length == 0){
                 console.log("No faces detected");
-                $("#getCode").append("<p>No faces could be detected</p>");
+                $("#uploadHeader").append("<p>No faces could be detected</p>");
                 return;
             }
             for (var i = 0; i < data.length; i++){
@@ -130,7 +129,7 @@ function categorize() {
         var htmlPerson = "<p>We found ";
         if (person.length==0){
             htmlPerson += "no known faces in this photo</p>";
-            $("#getCode").append("<p>All faces in photo are unknown</p>");
+            $("#uploadHeader").append("<p>All faces in photo are unknown</p>");
             console.log("No Faces Identified");
         }
         else {
@@ -151,8 +150,8 @@ function categorize() {
                     /*if (i == person.length-1){
                         htmlPerson += " in this photo</p>";
                     }*/
-                    $("#getCode").append(data["name"] + ", ");
-                    $("#getCodeModal").modal('show');
+                    $("#uploadHeader").append(data["name"] + ", ");
+                    //$("#getCodeModal").modal('show');
                     console.log(htmlPerson);
                 })
                 .fail(function() {

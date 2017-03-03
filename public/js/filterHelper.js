@@ -55,6 +55,10 @@ function filter(imageData, tags){
 	for (var i = 0; i < imageData.images.length; i++){
 		//console.log(tags.values[i]);
 		//console.log(imageData.images[i]);
+		if (tags.values.length === 0){
+			arrayObject = { filename: imageData.images[i].imageURL, aspectRatio: imageData.images[i].aspectRatio};
+			imageArray.push(arrayObject);
+		}
 
 		//iterate through tag values set in taggle
 		for (var j = 0; j < tags.values.length; j++){
