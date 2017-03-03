@@ -10,6 +10,23 @@ function getImageArray(result){
 	// define what element should be observed by the observer
 	// and what types of mutations trigger the callback
 	imageData = result;
+	var imageArray = [];
+	//initial display
+	for (var i = 0; i < imageData.images.length; i++){
+		arrayObject = { filename: imageData.images[i].imageURL, aspectRatio: imageData.images[i].aspectRatio};
+		imageArray.push(arrayObject);
+	}
+
+	var pig = new Pig(imageArray, {
+
+			thumbnailSize:1,	
+			spaceBetweenImages:2,
+			containerID:'pig',		
+			urlForSize: function(filename, size) {
+				return filename;
+			}
+		}).enable();
+
 	var target = document.getElementById("taggle_list");
 	//console.log(target);
 
@@ -65,9 +82,11 @@ function filter(imageData, tags){
 	}
 	console.log(imageArray);
 
+	pig.disable();
+
 	$("a.pig-figure").remove();
 	
-	pig.disable();
+
 	
 	pig = new Pig(imageArray, {
 

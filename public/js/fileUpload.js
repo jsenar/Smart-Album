@@ -37,6 +37,7 @@ function categorize() {
     var params = {
         // Request parameters
     };
+    console.log("pressed categorize");
 
     var filething = document.getElementById('file-select').files[0];
 
