@@ -372,8 +372,21 @@ button.close {
 }
 
 #file-form{
-	margin-top:20px;
-	
+	margin-top:20px;	
+}
+
+#uploadModal {
+	margin-top: 25%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+#uploadCategorizeBtn {
+	text-transform: lowercase;
+	text-transform: capitalize;
+	background-color: none;
+	color: #fff;
+	font-weight: 200 !important;
 }
 
 #upload-button{

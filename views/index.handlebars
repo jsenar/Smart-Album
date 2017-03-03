@@ -131,7 +131,7 @@
 			</div>
 
 			<div class = "col-xs-6">
-				<a href="upload" class="btn btn-default btn-fab"  style = "float: right; background-color: #fff;"><i class="material-icons">add</i></a>
+				<a data-toggle="modal" data-target = "#uploadModal" class="btn btn-default btn-fab"  style = "float: right; background-color: #fff;"><i class="material-icons">add</i></a>
 			</div>
 		</div>
 	</div>
@@ -234,6 +234,25 @@
     	</div>
   </div>
 </div>	
+<!-- Upload Modal boiiiii -->
+	<div class = "modal" id = "uploadModal">
+		<div class="modal-dialog">
+    		<div class="modal-content" style="background-color:#2391d3; color: #fff">
+      			<div class="modal-header">
+        			<button type="button" class="close" style="color: #fff; opacity: 1; font-weight: 400" data-dismiss="modal" aria-hidden="true">x</button>
+        		<h3 class="modal-title">Upload</h3>
+      			</div>
+      			<div class="modal-body">
+      				<div class=" fileUpload">
+      					<input type="file" name="Upload" placeholder="Choose a File" id="file-select" style="color: #fff;">
+      				</div>
+      			</div>
+      			<div class = "modal-footer">
+      				<button id="uploadCategorizeBtn" type="button" onclick="categorize()" class="btn btn-default btn-lg">Categorize Me!</button>
+      			</div>
+			</div>
+		</div>
+	</div>
 	
 
 	<script src="js/jquery.min.js"></script>
@@ -249,6 +268,7 @@
 	</script>
 	<script type="text/javascript" src="js/mdb.min.js"></script>
 	<script type="text/javascript" src = "js/bootstrap-material-design.js"></script>
+	<script src="js/fileUpload.js"></script>
 	<script src = "js/pig.js"></script>
 	<script type="text/javascript">
 		var images = [
