@@ -46,6 +46,7 @@ app.get('/', login.view);
 // app.get('/users', user.list);
 app.get('/upload', upload.view);
 app.get('/index', index.view);
+app.get('/indexRedesign', index.viewRedesign);
 app.get('/permissions', permissions.view); 
 app.get('/images', images.imageJSON);
 
