@@ -1,29 +1,108 @@
 console.log("filterhelper connected");
-var imagesToFilter = document.querySelectorAll("#lightgallery .imagesToFilter");
-var checkBoxes = document.querySelectorAll("#filterModal .checkbox label input");
-var tags = taggle.getTags();
-console.log(taggle.getTags());
-console.log(data);
+//var imagesToFilter = document.querySelectorAll("#lightgallery .imagesToFilter");
+//var checkBoxes = document.querySelectorAll("#filterModal .checkbox label input");
+	
+$.get("images/", getImageArray);
 
-MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+function getImageArray(result){
+	MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
-// define what element should be observed by the observer
-// and what types of mutations trigger the callback
-var target = document.getElementByClassName("taggle_list");
+	// define what element should be observed by the observer
+	// and what types of mutations trigger the callback
+	imageData = result;
+	var imageArray = [];
+	//initial display
+	for (var i = 0; i < imageData.images.length; i++){
+		arrayObject = { filename: imageData.images[i].imageURL, aspectRatio: imageData.images[i].aspectRatio};
+		imageArray.push(arrayObject);
+	}
 
-var observer = new MutationObserver(
-	function(mutations) {
-		searchTags();
-});
+	var pig = new Pig(imageArray, {
+
+			thumbnailSize:1,	
+			spaceBetweenImages:2,
+			containerID:'pig',		
+			urlForSize: function(filename, size) {
+				return filename;
+			}
+		}).enable();
+
+	var target = document.getElementById("taggle_list");
+	//console.log(target);
+
+	var observer = new MutationObserver(
+		function(mutations) {
+			mutations.forEach(function(mutation) {
+				if (mutation.type == "childList"){
+					filter(imageData, taggle.getTags());
+				}
+			})
+		});
  
-// configuration of the observer:
-var config = { attributes: true, childList: true, characterData: true };
+	// configuration of the observer:
+	var config = { attributes: true, childList: true, characterData: true, subtree:true };
  
-// pass in the target node, as well as the observer options
-observer.observe(target, config);
+	// pass in the target node, as well as the observer options
+	observer.observe(target, config);
+}
+
+function filter(imageData, tags){
+	//console.log(imageData.images);
+	//console.log(tags.values);
+	var imageArray = [];
+	var skipImg = false;
+	//iterate through each image from the Data
+	for (var i = 0; i < imageData.images.length; i++){
+		//console.log(tags.values[i]);
+		//console.log(imageData.images[i]);
+
+		//iterate through tag values set in taggle
+		for (var j = 0; j < tags.values.length; j++){
+
+			//check if the tag value is in the imageData
+			for (var k = 0; k < imageData.images[i].tags.length; k++){
+				if (tags.values[j].toLowerCase() === imageData.images[i].tags[k].toLowerCase()){
+					arrayObject = { filename: imageData.images[i].imageURL, aspectRatio: imageData.images[i].aspectRatio};
+					imageArray.push(arrayObject);
+					//console.log(arrayObject);
+					//console.log(imageData.images[i]);
+					skipImg = true;
+				}
+				if (skipImg){
+					break;
+				}
+			}
+			if (skipImg){
+				break;
+			}
+		}
+		if (skipImg){
+			skipImg = false;
+		}
+	}
+	console.log(imageArray);
+
+	pig.disable();
+
+	$("a.pig-figure").remove();
+	
+
+	
+	pig = new Pig(imageArray, {
+
+			thumbnailSize:1,	
+			spaceBetweenImages:2,
+			containerID:'pig',		
+			urlForSize: function(filename, size) {
+				return filename;
+			}
+		}).enable();
+}
+
+
 
 // setup click event handlers on filter checkboxes
-for (var i = 0; i < checkBoxes.length; i++) {
+/*for (var i = 0; i < checkBoxes.length; i++) {
 	checkBoxes[i].addEventListener("click", filterImages , false);
 	checkBoxes[i].checked = true;
 	checkBoxMap.set(checkBoxes[i].value, checkBoxes[i].checked)
@@ -167,6 +246,5 @@ function removeClass(element, classToRemove) {
   
     element.className = filteredList.join(" ");
 }
-
-
+*/
 

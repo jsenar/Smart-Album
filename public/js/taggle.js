@@ -313,6 +313,7 @@
         var fontSize;
 
         this.list.className = 'taggle_list';
+        this.list.id = 'taggle_list';
         this.input.type = 'text';
         // Make sure no left/right padding messes with the input sizing
         this.input.style.paddingLeft = 0;

@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var upload = require('./routes/upload');
 var login = require('./routes/login');
 var permissions = require('./routes/permissions');
+var images = require('./routes/images');
 
 // Example route
 // var user = require('./routes/user');
@@ -47,6 +48,7 @@ app.get('/upload', upload.view);
 app.get('/index', index.view);
 app.get('/indexRedesign', index.viewRedesign);
 app.get('/permissions', permissions.view); 
+app.get('/images', images.imageJSON);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

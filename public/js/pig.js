@@ -847,7 +847,7 @@
       this.element = document.createElement(this.pig.settings.figureTagName);
       this.element.className = this.classNames.figure;
       this.element.setAttribute('data-lightbox' , 'lightbox');
-      this.element.setAttribute('href', 'img/100/' + this.filename);
+      this.element.setAttribute('href', this.filename);
       this._updateStyles();
     }
 
