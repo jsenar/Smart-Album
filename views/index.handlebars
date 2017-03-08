@@ -52,7 +52,7 @@
 		</div>
 		<!-- if redesign move voice button to filter menu -->
                 {{#if redesign}}
-		   <a class="btn btn-default btn-fab" style="background-color: #fff;" data-toggle="modal"
+		   <a class="btn btn-default btn-fab" id="voiceBtnB" style="background-color: #fff;" data-toggle="modal"
 		      data-target="#voiceModal"><i class="material-icons">keyboard_voice</i>
 		   </a>
 	        {{/if}}
@@ -150,7 +150,7 @@
 		<div class = "row" id="bottomButton">
 		        {{#unless redesign}}
 			<div class = "col-xs-6">
-				<a class="btn btn-default btn-fab" style="background-color: #fff;" data-toggle="modal"
+				<a class="btn btn-default btn-fab" id="voiceBtn" style="background-color: #fff;" data-toggle="modal"
 						data-target="#voiceModal"><i class="material-icons">keyboard_voice</i>
 					
 				</a>
@@ -163,7 +163,7 @@
 
                         {{#if redesign}}
                         <button type="button" class="btn-primary
-			   btn-block btn-lg" data-toggle="modal"
+			   btn-block btn-lg" id="shareBtnB" data-toggle="modal"
 			   data-target="#shareModal" style="background-color:
 #00F">Share these Photos!</button> 
                         {{/if}}
@@ -356,7 +356,17 @@
 	<script src="js/speech.1.0.0.js"></script>
 	<script src="js/stt.js"></script>
 	<script src="js/shareHelper.js"></script>
+	<script src="js/googleanalytics.js"></script>
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-93263740-1', 'auto');
+  ga('send', 'pageview');
+
+</script> 
 	</body>
 
 </html>
