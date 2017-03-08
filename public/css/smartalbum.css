@@ -398,6 +398,10 @@ button.close {
 }
 
 /* Upload Page */
+#api-tags{
+	position: relative;
+	margin: 10px;
+}
 
 .upload-header {
     position: relative;
