@@ -42,10 +42,11 @@ function parseSTT(text) {
 	var tagsArray = tags.split(" ");
 	//console.log(tagsArray);
 	tagsArray.shift();
+  var tagObject = {'values': tagsArray};
 
 	// now use tagsArray on the filter checkBoxes
 	// function from filterHelper.js
-        filterImagesVoice(tagsArray);
+        filterImagesVoice(tagObject);
      }
      else {
          document.getElementById("STToutput").innerHTML += ("\n" + "I am sorry I could not understand you. Please try again with 'add tags ...'.");
@@ -148,8 +149,8 @@ function getToken() {
             //data: "{body}",
         })
         .done(function(data) {
-	    console.log(data);
-	    console.log(Object.prototype.toString.call(data));
+	    //console.log(data);
+	    //console.log(Object.prototype.toString.call(data));
 	    accessToken = data;
             //alert("success");
         })
