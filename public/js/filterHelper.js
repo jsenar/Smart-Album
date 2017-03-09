@@ -51,6 +51,7 @@ function getImageArray(){
 	});
 }
 
+//For searching for images with at least one of the searched tags
 function filter(imageData, tags){
 	//console.log(imageData.images);
 	//console.log(tags.values);
@@ -108,6 +109,7 @@ function filter(imageData, tags){
 		}).enable();
 }
 
+// For searching for images that have all of the searched tags
 // This algorithm is bad and I feel bad for writing it
 function filterAll(imageData, tags){
 	//console.log(imageData.images);
