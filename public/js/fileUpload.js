@@ -6,34 +6,24 @@ $("#file-select").change(function(e) {
         img.src = reader.result;
     }
  }
- for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+    var file = e.originalEvent.srcElement.files[0];
 
-    var file = e.originalEvent.srcElement.files[i];
-
-
-     var div = document.createElement("div");
-     div.id = i;
-     div.className = "col-xs-4 topPadding";
-     var img = document.createElement("img");
-     img.className = "img-responsive";
-     //div.className = "picContainer";
-     var reader = new FileReader();
-     reader.onloadend = initOnReaderLoaded(img, reader);
-     reader.readAsDataURL(file);
-     div.appendChild(img);
-     if (i==0){
-        $("input").after(div);
-     }
-     else{
-        $("#" + (i-1)).after(div);
-     }
-     //$("input").after(div);
-     //var container = document.getElementById("images-container");
-     //container.appendChild(div);
-} });
+    var div = document.createElement("div");
+    div.id = "upload-thumbnail";
+    div.className = "col-xs-4 topPadding";
+    var img = document.createElement("img");
+    img.className = "img-responsive";
+    var reader = new FileReader();
+    reader.onloadend = initOnReaderLoaded(img, reader);
+    reader.readAsDataURL(file);
+    div.appendChild(img);
+    $("div#upload-thumbnail").remove();
+    $("input").after(div);
+ });
 
 // Handles Vision and Face API Logic
 function categorize() {
+    $("div#api-tags").remove();
     var params = {
         // Request parameters
     };
@@ -58,16 +48,26 @@ function categorize() {
             var htmlData ='';
             for (var i = 0; i < data["tags"].length; i++){
                 if (i == data["tags"].length-1){
-                    htmlData += data["tags"][i].name+ ', ';
+                    htmlData += data["tags"][i].name + ', ';
                 }
                 else{
                     htmlData += data["tags"][i].name + ', ';
                 }
             }
-            htmlData += '</p>';
+            if (!document.getElementById("api-tags")){
+                var div = document.createElement("div");
+                div.id = "api-tags";
+                $("#uploadHeader").after(div);
+            }
+            else{
+                var div = document.getElementById('api-tags');
+            }
+            var text = document.createElement("p");
+            var node = document.createTextNode(htmlData);
+            text.appendChild(node);
+            div.appendChild(text);
             //$('#uploadModal').modal('show'); 
             //alert(JSON.stringify(data["tags"]));
-            $("#uploadHeader").append(htmlData);
         })
         .fail(function() {
             alert("Error creating tags");
@@ -95,7 +95,16 @@ function categorize() {
             };
             if (data.length == 0){
                 console.log("No faces detected");
-                $("#uploadHeader").append("<p>No faces could be detected</p>");
+                 if (!document.getElementById("api-tags")){
+                    var div = document.createElement("div");
+                    div.id = "api-tags";
+                    $("#uploadHeader").after(div);
+                }
+                else{
+                    var div = document.getElementById('api-tags');
+
+                }
+                div.append("<p>No faces could be detected</p>");
                 return;
             }
             for (var i = 0; i < data.length; i++){
@@ -126,11 +135,10 @@ function categorize() {
                 person.push(data[i].candidates[0].personId);
             }
         }
-        var htmlPerson = "<p>We found ";
+
         if (person.length==0){
-            htmlPerson += "no known faces in this photo</p>";
-            $("#uploadHeader").append("<p>All faces in photo are unknown</p>");
-            console.log("No Faces Identified");
+            //htmlPerson += "no known faces in this photo</p>";
+            $("#api-tags").append("<p>Could not identify any faces in photo</p>");
         }
         else {
             //$("#getCode").append("<p>We found ");
@@ -150,9 +158,15 @@ function categorize() {
                     /*if (i == person.length-1){
                         htmlPerson += " in this photo</p>";
                     }*/
-                    $("#uploadHeader").append(data["name"] + ", ");
-                    //$("#getCodeModal").modal('show');
-                    console.log(htmlPerson);
+                    if (!document.getElementById("api-tags")){
+                        var div = document.createElement("div");
+                        div.id = "api-tags";
+                        $("#uploadHeader").after(div);
+                    }
+                    else{
+                        var div = document.getElementById('api-tags');
+                    }
+                    $(div).append(data["name"] + ", ");
                 })
                 .fail(function() {
                     console.log("Identify Failed");

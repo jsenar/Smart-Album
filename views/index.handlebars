@@ -281,6 +281,7 @@
       			<div id="uploadHeader" class="modal-header">
         			<button type="button" class="close" style="color: #fff; opacity: 1; font-weight: 400" data-dismiss="modal" aria-hidden="true">x</button>
         		<h3 class="modal-title">Upload</h3>
+        		<h5 class="modal-title">Tags:</h5>
       			</div>
       			<div class="modal-body">
       				<div class=" fileUpload">
@@ -313,31 +314,17 @@
 	<script type="text/javascript" src = "js/bootstrap-material-design.js"></script>
 	<script src="js/fileUpload.js"></script>
 	<script src = "js/pig.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
 	<script type="text/javascript">
-		var images = [
-			{filename: 'https://s3-us-west-1.amazonaws.com/smart-album/large/20170212_140511.jpg', aspectRatio:1.33},
-			{filename: 'https://s3-us-west-1.amazonaws.com/smart-album/large/bridge.JPG', aspectRatio:1.33},
-			/*{filename: 'chad.jpg', aspectRatio:1.33},
-			{filename: 'fish.JPG', aspectRatio:.75},
-			{filename: 'john.jpg', aspectRatio:1.33},
-			{filename: 'laptop.jpg', aspectRatio:1.33},
-			{filename: 'statue.JPG', aspectRatio:.75},
-			{filename: 'sunrise.JPG', aspectRatio:1.33},
-
-			{filename: 'temple.JPG', aspectRatio:1.33},
-			{filename: 'view.JPG', aspectRatio:1.33},*/
-		];
-
-		var pig = new Pig(images, {
-
-			thumbnailSize:1,	
-			spaceBetweenImages:2,
-			containerID:'pig',		
-			urlForSize: function(filename, size) {
-				return /*'img/' + size + '/' +*/ filename;
-			}
-		}).enable();
-
+		var config = {
+  			apiKey: "AIzaSyBD2069i9WB12fyMdxG0cjeOZNTupqo7dE",
+  			authDomain: "smart-album.firebaseapp.com",
+  			databaseURL: "https://smart-album.firebaseio.com",
+  			storageBucket: "smart-album.appspot.com",
+		};
+		firebase.initializeApp(config);
+		var database = firebase.database();
+		//var images = firebase.database().ref('images');
 	</script>
 
 	<script src="js/lightgallery.min.js"></script>
@@ -359,7 +346,6 @@
 	
 		taggle = new Taggle('example1', {
 		});
-		console.log(taggle.getTags())
 	</script>
 	<script src="js/filterHelper.js"></script>
 	<script src="js/speech.1.0.0.js"></script>
