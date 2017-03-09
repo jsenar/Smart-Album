@@ -4,10 +4,11 @@ $(document).ready(function() {
 });
 
 function initializePage() {
-	$("#shareBtn").click(function () {
+	$(".shareBtn").click(function () {
    		ga("send", "event", "shareBtn", "click");
 	});
-
+   
+	/*
   	$("#shareBtnB").click(function () {
         	ga("send", "event", "shareBtnB", "click");
 	});
@@ -19,6 +20,6 @@ function initializePage() {
 	$("#voiceBtnB").click(function () {
 		ga("send", "event", "voiceBtnB", "click");
 	});
-
+	*/
 
 }
