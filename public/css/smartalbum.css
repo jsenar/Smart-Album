@@ -1,5 +1,5 @@
 body {
-	font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+	font-family: 'Roboto', 'Helvetica Neue', sans-serif !important;
 }
 
 #bottomButton {
@@ -112,11 +112,14 @@ body {
 
 .homescreen-body {
 	background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-	background-size: 100% 100%;
-    -webkit-animation: rainbow 8s ease infinite;
-    -z-animation: rainbow 8s ease infinite;
-    -o-animation: rainbow 8s ease infinite;
-    animation: rainbow 8s ease infinite;
+	background-size: 100% 500%;
+    -webkit-animation: rainbow 5s ease infinite;
+    -z-animation: rainbow 10s ease infinite;
+    -o-animation: rainbow 10s ease infinite;
+    animation: rainbow 10s ease infinite;
+    height: 100%;
+    height:100vh;
+    
 }
 
 .homescreen-header {
@@ -126,19 +129,12 @@ body {
 	opacity: .8;
 }
 
-.rainbow {
-	background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-	background-size: 100% 100%;
-    -webkit-animation: rainbow 8s ease infinite;
-    -z-animation: rainbow 8s ease infinite;
-    -o-animation: rainbow 8s ease infinite;
-    animation: rainbow 8s ease infinite;
-}
+
 
 @-webkit-keyframes rainbow {
-    0%{background-position:0% 82%}
+    0%{background-position:0% 90%}
     50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
+    100%{background-position:0% 90%}
 }
 
 .homescreen-header h2 {
@@ -190,10 +186,11 @@ body {
     top: 0;
     left: 0;
     background-color: #111;
-    background-image: url("../images/background.png");
+    box-shadow: 1.5px 1px 1px #000;
     overflow-x: hidden;
-    padding-top: 60px;
+    padding-top: 10px;
     transition: 0.5s;
+    border-radius: 5px;
 }
 
 .side-menu a {
@@ -220,10 +217,21 @@ body {
 }
 
 .block {
+
+}
+
+.block h5 {
+	color: #000;
+	font-weight: 100;
+	font-size: small;
+}
+
+.tags {
+	margin: 5px;
 }
 
 .tags h5 {
-	color: #fff;
+	color: #000;
 	font-weight: 100;
 }
 
@@ -247,7 +255,7 @@ body {
 }
 
 .taggle_text {
-	font: 'Roboto', "Helvetica"!important;
+	font-family: 'Roboto', "Helvetica"!important;
 	font-weight: 200;
 	float: left;
 }
@@ -257,7 +265,7 @@ button.close {
 	float: right;
 }
 
-.taggle_input {
+.taggle_input {font: 'Roboto', 'Helvetica', 'sans-serif' !important;
 	position: relative;
 	cursor: default;
 	outline: 0;
@@ -268,14 +276,17 @@ button.close {
 }
 
 .taggle_list li {
+	font-family: 'Roboto', 'Helvetica', 'sans-serif' !important;
 	float: left;
 	display: inline-block;
 	white-space: nowrap;
 	margin-bottom: 5px;
 	font-weight: 200;
+	font
 }
 
 .taggle_list .taggle {
+	font-family: 'Roboto', 'Helvetica', 'sans-serif' !important;
 	margin-right: 8px;
 	padding: 5px 5px;
 	border-radius: 3px;
@@ -289,6 +300,7 @@ button.close {
 }
 
 .taggle_input {
+	font-family:  'Roboto', 'Helvetica', 'sans-serif' !important;
 	padding:8px;
 	padding-left: 0;
 	float: left;
@@ -304,6 +316,11 @@ button.close {
 	position: absolute;
 	z-index: -1;
 	visibility: hidden;
+}
+
+.taggle_placeholder {
+	font-family:  'Roboto', 'Helvetica', 'sans-serif' !important;
+	font-weight: 200;
 }
 
 /* Share Modal */
@@ -339,6 +356,8 @@ button.close {
 	margin-top: 25%;
 	margin-left: 5%;
 	margin-right: 5%;
+	background-color: #fff;
+	opacity: .7;
 }
 
 #voiceRecordBtn {
