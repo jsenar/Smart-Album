@@ -1,9 +1,10 @@
 console.log("filterhelper connected");
 
-getImageArray();
+//loadImageArray();
 //$.get("images/", getImageArray);
 
-function getImageArray(){
+
+//function loadImageArray(){
 	firebase.database().ref('images').once('value', function(snapshot) {
 
 	
@@ -14,7 +15,7 @@ function getImageArray(){
 		imageData = snapshot.val();
 		var imageArray = [];
 
-		console.log(imageData);
+		//console.log(imageData);
 	//initial display
 		for (var i = 0; i < imageData.length; i++){
 			arrayObject = { filename: imageData[i].imageURL, aspectRatio: imageData[i].aspectRatio};
@@ -34,25 +35,26 @@ function getImageArray(){
 		var target = document.getElementById("taggle_list");
 	//console.log(target);
 
-	var observer = new MutationObserver(
+		var observer = new MutationObserver(
 		function(mutations) {
 			mutations.forEach(function(mutation) {
 				if (mutation.type == "childList"){
-					filterAll(imageData, taggle.getTags());
+					filter(imageData, taggle.getTags());
 				}
 			})
 		});
  
 	// configuration of the observer:
-	var config = { attributes: true, childList: true, characterData: true, subtree:true };
+		var config = { attributes: true, childList: true, characterData: true, subtree:true };
  
 	// pass in the target node, as well as the observer options
-	observer.observe(target, config);
+		observer.observe(target, config);
 	});
-}
+//}
 
 //For searching for images with at least one of the searched tags
 function filter(imageData, tags){
+	console.log(tags);
 	//console.log(imageData.images);
 	//console.log(tags.values);
 	var imageArray = [];
@@ -92,7 +94,7 @@ function filter(imageData, tags){
 	}
 	console.log(imageArray);
 
-	pig.disable();
+	//pig.disable();
 
 	$("a.pig-figure").remove();
 	
@@ -165,4 +167,9 @@ function filterAll(imageData, tags){
 				return filename;
 			}
 		}).enable();
+}
+
+function filterImagesVoice(tagsArray) {
+	console.log(tagsArray);
+	filter(imageData, tagsArray);
 }
