@@ -26,21 +26,31 @@ function upload(){
     console.log(file);
     var ref = firebase.storage().ref().child(file.name);
     console.log("upload pressed");
+    var key = file.name.replace(/\./g, '_');
     ref.put(file).then(function(snapshot) {
         console.log('Uploaded a blob or file!');
-        alert('Upload Successful! Now Tagging Photo');
-        categorize(file);
+        //alert('Upload Successful! Now Tagging Photo');
+        var URL = snapshot.downloadURL;
+        var db = firebase.database().ref('images/' + key);
+        firebase.database().ref('images/' + key + "/imageURL/").set(URL)
+            .then(function() {
+                firebase.database().ref('images/' + key + "/aspectRatio/").set(1.33)
+                    .then(loadImageArray());
+                });
     });
+
+    categorize(file, key);
+
 }
 
 // Handles Vision and Face API Logic
-function categorize(filething) {
+function categorize(filething, key) {
     $("div#api-tags").remove();
     var params = {
         // Request parameters
     };
     console.log("pressed categorize");
-    var key = filething.name.replace(/\./g, '_');
+    //var key = filething.name.replace(/\./g, '_');
     console.log(key);
     //var filething = document.getElementById('file-select').files[0];
     //upload(filething);
@@ -67,6 +77,10 @@ function categorize(filething) {
                 else{
                     htmlData += data["tags"][i].name + ', ';
                 }
+                var tag = data["tags"][i].name
+                var dbref = firebase.database().ref('images/' + key);
+                console.log(key + " " + tag);
+                firebase.database().ref('images/' + key + '/tags/' + tag).set(true);
             }
             if (!document.getElementById("api-tags")){
                 var div = document.createElement("div");
@@ -80,6 +94,7 @@ function categorize(filething) {
             var node = document.createTextNode(htmlData);
             text.appendChild(node);
             div.appendChild(text);
+           
             //$('#uploadModal').modal('show'); 
             //alert(JSON.stringify(data["tags"]));
         })
@@ -180,6 +195,7 @@ function categorize(filething) {
                     else{
                         var div = document.getElementById('api-tags');
                     }
+                    firebase.database().ref('images/' + key + '/tags/' + data["name"]).set(true);
                     $(div).append(data["name"] + ", ");
                 })
                 .fail(function() {

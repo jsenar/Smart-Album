@@ -1,10 +1,10 @@
 console.log("filterhelper connected");
 
-//loadImageArray();
+loadImageArray();
 //$.get("images/", loadImageArray);
 
-
-//function loadImageArray(result){
+var pig;
+function loadImageArray(){
 	firebase.database().ref('images').once('value', function(snapshot) {
 
 	
@@ -14,14 +14,9 @@ console.log("filterhelper connected");
 	// and what types of mutations trigger the callback
 		var imageData = snapshot.val();
 		var imageArray = [];
-		console.log(imageData);
+		//console.log(imageData);
 
 		//console.log(imageData);
-	//initial display
-		/*for (var i = 0; i < imageData.length; i++){
-			arrayObject = { filename: imageData[i].imageURL, aspectRatio: imageData[i].aspectRatio};
-			imageArray.push(arrayObject);
-		}*/
 		for (var key in imageData) {
     		if (imageData.hasOwnProperty(key)) {
         		//The current property is not a direct property of p
@@ -33,7 +28,11 @@ console.log("filterhelper connected");
     	}
 		}
 
-		var pig = new Pig(imageArray, {
+		if (pig){
+			$("a.pig-figure").remove();
+			pig.disable();
+		}
+		pig = new Pig(imageArray, {
 
 			thumbnailSize:1,	
 			spaceBetweenImages:2,
@@ -61,11 +60,11 @@ console.log("filterhelper connected");
 	// pass in the target node, as well as the observer options
 		observer.observe(target, config);
 	});
-//}
+}
 
 //For searching for images with at least one of the searched tags
 function filter(imageData, tags){
-	console.log(tags);
+	//console.log(tags);
 	//console.log(imageData.images);
 	//console.log(tags.values);
 	var imageArray = [];
@@ -79,6 +78,7 @@ function filter(imageData, tags){
 		if (tags.values.length === 0){
 			arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
 			imageArray.push(arrayObject);
+			continue;
 		}
 
 		//iterate through tag values set in taggle
@@ -111,7 +111,7 @@ function filter(imageData, tags){
 	}
 	console.log(imageArray);
 
-	//pig.disable();
+	pig.disable();
 
 	$("a.pig-figure").remove();
 	
@@ -173,9 +173,9 @@ function filterAll(imageData, tags){
 		}
 	}
 	}
-	console.log(imageArray);
+	//console.log(imageArray);
 
-	//pig.disable();
+	pig.disable();
 
 	$("a.pig-figure").remove();
 	
@@ -190,6 +190,6 @@ function filterAll(imageData, tags){
 }
 
 function filterImagesVoice(tagsArray) {
-	console.log(tagsArray);
+	//console.log(tagsArray);
 	filter(imageData, tagsArray);
 }
