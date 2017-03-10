@@ -1,18 +1,18 @@
 console.log("filterhelper connected");
 
 //loadImageArray();
-$.get("images/", loadImageArray);
+//$.get("images/", loadImageArray);
 
 
-function loadImageArray(result){
-	//firebase.database().ref('images').once('value', function(snapshot) {
+//function loadImageArray(result){
+	firebase.database().ref('images').once('value', function(snapshot) {
 
 	
 		MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
 	// define what element should be observed by the observer
 	// and what types of mutations trigger the callback
-		var imageData = result.images;//snapshot.val();
+		var imageData = snapshot.val();
 		var imageArray = [];
 		console.log(imageData);
 
@@ -60,8 +60,8 @@ function loadImageArray(result){
  
 	// pass in the target node, as well as the observer options
 		observer.observe(target, config);
-	//});
-}
+	});
+//}
 
 //For searching for images with at least one of the searched tags
 function filter(imageData, tags){
