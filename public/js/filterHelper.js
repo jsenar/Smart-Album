@@ -1,18 +1,18 @@
 console.log("filterhelper connected");
 
 //loadImageArray();
-//$.get("images/", loadImageArray);
+$.get("images/", loadImageArray);
 
 
-//function loadImageArray(result){
-	firebase.database().ref('images').once('value', function(snapshot) {
+function loadImageArray(result){
+	//firebase.database().ref('images').once('value', function(snapshot) {
 
 	
 		MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
 	// define what element should be observed by the observer
 	// and what types of mutations trigger the callback
-		var imageData = snapshot.val();
+		var imageData = result.images;//snapshot.val();
 		var imageArray = [];
 		console.log(imageData);
 
@@ -60,8 +60,8 @@ console.log("filterhelper connected");
  
 	// pass in the target node, as well as the observer options
 		observer.observe(target, config);
-	});
-//}
+	//});
+}
 
 //For searching for images with at least one of the searched tags
 function filter(imageData, tags){
@@ -85,8 +85,10 @@ function filter(imageData, tags){
 		for (var j = 0; j < tags.values.length; j++){
 
 			//check if the tag value is in the imageData
-			for (var k = 0; k < imageData[key].tags.length; k++){
-				if (tags.values[j].toLowerCase() === imageData[key].tags[k].toLowerCase()){
+			for (var tag in imageData[key].tags){
+				if (imageData[key].tags.hasOwnProperty(tag)){
+
+				if (tags.values[j].toLowerCase() === tag.toLowerCase()){
 					arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
 					imageArray.push(arrayObject);
 					//console.log(arrayObject);
@@ -96,6 +98,7 @@ function filter(imageData, tags){
 				if (skipImg){
 					break;
 				}
+			}
 			}
 			if (skipImg){
 				break;
@@ -148,14 +151,15 @@ function filterAll(imageData, tags){
 		for (var j = 0; j < tags.values.length; j++){
 
 			//check if the tag value is in the imageData
-			for (var k = 0; k < imageData[key].tags.length; k++){
-
-				if (tags.values[j].toLowerCase() === imageData[key].tags[k].toLowerCase()){
+			for (var tag in imageData[key].tag){
+				if (imageData[key].tag.hasOwnProperty(tag)){
+				if (tags.values[j].toLowerCase() === tag.toLowerCase()){
 					// if the tags match, break out of imageData and go to the next taggle.
 					//increment that tag counter
 					counter++;
 					break;
 				}
+			}
 			}
 			//on last taggle
 			if (j+1 === tags.values.length){

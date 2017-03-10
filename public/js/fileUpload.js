@@ -28,19 +28,22 @@ function upload(){
     console.log("upload pressed");
     ref.put(file).then(function(snapshot) {
         console.log('Uploaded a blob or file!');
+        alert('Upload Successful! Now Tagging Photo');
+        categorize(file);
     });
 }
 
 // Handles Vision and Face API Logic
-function categorize() {
+function categorize(filething) {
     $("div#api-tags").remove();
     var params = {
         // Request parameters
     };
     console.log("pressed categorize");
-
-    var filething = document.getElementById('file-select').files[0];
-    upload(filething);
+    var key = filething.name.replace(/\./g, '_');
+    console.log(key);
+    //var filething = document.getElementById('file-select').files[0];
+    //upload(filething);
 
     // Get image tags with vision API
     $.ajax({
