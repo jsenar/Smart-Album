@@ -191,5 +191,7 @@ function filterAll(imageData, tags){
 
 function filterImagesVoice(tagsArray) {
 	//console.log(tagsArray);
-	filter(imageData, tagsArray);
+	firebase.database().ref('images').once('value', function(snapshot) {
+		filter(snapshot.val(), tagsArray);
+	});
 }
