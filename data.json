@@ -1,55 +1,55 @@
 {
-	"images": [
-		{
+	"images": {
+		"20170212_140511_jpg": {
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/20170212_140511.jpg",
 			"tags": ["laptop", "coffee", "Andrew"],
 			"aspectRatio": 1.33
 		},
-		{
+		"20170212_140513_jpg": {
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/20170212_140513.jpg",
 			"tags": ["laptop", "Chad"],
 			"aspectRatio":1.33
 		},
-		{
+		"20170212_140516_jpg": {
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/20170212_140516.jpg",
 			"tags": ["laptop"],
 			"aspectRatio":1.33
 		},
-		{
+		"20170212_140523_jpg":{
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/20170212_140523.jpg",
 			"tags": ["John"],
 			"aspectRatio":1.33
 		},
-		{
+		"bridge_JPG":{
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/bridge.JPG",
 			"tags": ["Water", "Bridge"],
 			"aspectRatio":1.33
 		},
-		{
+		"fish_JPG": {
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/fish.JPG",
 			"tags": ["Fish"],
 			"aspectRatio":0.75
 		},
-		{
+		"statue_JPG": {
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/statue.JPG",
 			"tags": ["Statue", "Tree"],
 			"aspectRatio":0.75
 		},
-		{
+		"sunrise_JPG": {
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/sunrise.JPG",
 			"tags": ["Sun", "Building", "Bridge", "Water"],
 			"aspectRatio":1.33
 		},
-		{
+		"temple_JPG": {
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/temple.JPG",
 			"tags": ["Tree", "Building"],
 			"aspectRatio":1.33
 		},
-		{
+		"view_JPG": {
 			"imageURL": "https://s3-us-west-1.amazonaws.com/smart-album/large/view.JPG",
 			"tags": ["Sun", "Cloud"],
 			"aspectRatio":1.33
 		}
-	],
+	},
 	"uniqueTags":["laptop","coffee","Andrew","Chad","John", "Water", "Bridge", "Fish", "Statue", "Tree", "Sun", "Building", "Cloud"]
 }

@@ -21,6 +21,16 @@ $("#file-select").change(function(e) {
     $("input").after(div);
  });
 
+function upload(){
+    var file = document.getElementById('file-select').files[0];
+    console.log(file);
+    var ref = firebase.storage().ref().child(file.name);
+    console.log("upload pressed");
+    ref.put(file).then(function(snapshot) {
+        console.log('Uploaded a blob or file!');
+    });
+}
+
 // Handles Vision and Face API Logic
 function categorize() {
     $("div#api-tags").remove();
@@ -30,6 +40,7 @@ function categorize() {
     console.log("pressed categorize");
 
     var filething = document.getElementById('file-select').files[0];
+    upload(filething);
 
     // Get image tags with vision API
     $.ajax({
