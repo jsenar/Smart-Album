@@ -204,19 +204,22 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 	
 		
      <div id="voiceModal" class="modal fade">
-	   <div class="modal-content" style="background-color:#2391d3; color: #fff">
-	      <div class="modal-body">
+	   <div class="modal-content" style=" color: #fff; opacity: 1; background-color: #000;">
+	      <div class="modal-body voiceModalBody">
 	         <button type="button" class="close"
-		 data-dismiss="modal">x</button>
+		 data-dismiss="modal" style="color: #fff; opacity: 1.0; font-weight: 300;">x</button>
+		 		<div class = "spinner">
+		 			<div class = "cube1"></div>
+		 			<div class = "cube2"></div>
+		 		</div>
 	      	 <p>Press the Record button and then speak!</p>
 		 <p>Ex: Add photos with tags Andrew and John.</p>
 		 <p id="STToutput"></p>
+
 	      </div>
-	      <div align="center" class="modal-footer">
-	         <button id="voiceRecordBtn" type="button" class="btn
-		 btn-default confirmShare-btn">Record</button>
-		 <button id="stopRecord" type="button" class="btn
-		 btn-default">Stop</button>
+	      <div align="center" class="modal-footer" style="padding-left: 0; padding-right: 0;">
+	         <button id="voiceRecordBtn" type="button" class="btn btn-raised btn-default voiceBtns">Record</button>
+		 <button id="stopRecord" type="button" class="btn btn-raised btn-default voiceBtns">Stop</button>
 	      </div>
 	   </div>	
 	</div> 
@@ -428,12 +431,12 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 	<script src="js/stt.js"></script>
 	<script src="js/typed.js"></script>
 	<script>
-  	$(function(){
-      	$("#STToutput").typed({
-        	strings: ["First sentence.", "Second sentence."],
-        	typeSpeed: 0
-      	});
-  	});
+  	// $(function(){
+   //    	$("#STToutput").typed({
+   //      	strings: ["First sentence.", "Second sentence."],
+   //      	typeSpeed: 0
+   //    	});
+  	// });
 </script>
 	<script src="js/shareHelper.js"></script>
 	<script src="js/googleanalytics.js"></script>
