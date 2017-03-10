@@ -396,6 +396,10 @@ textarea.input {
 .placeholder_input input {
   width: 120px; }
 
+div#modal-us{
+	background-color:#fff;
+	color:#000;
+}
 /* Share Modal */
 #shareModal {
 	margin-top: 25%;
@@ -408,18 +412,18 @@ textarea.input {
 }
 
 .shareForm input {
-	color: #fff;
+	color: #000;
 }
 
 .confirmShare-btn {
 	border-bottom: 1px solid #fff !important;
-	color: #fff !important;
+	color: #000 !important;
 	padding-right: 24px;
 	padding-left: 24px;
 }
 
 .modal-header h3 {
-	color: #fff;
+	color: #000;
 	font-weight: 100;
 }
 
@@ -472,12 +476,12 @@ textarea.input {
 	margin-left: 5%;
 	margin-right: 5%;
 }
-
+input {
+	font-weight: 200;
+}
 #uploadCategorizeBtn {
 	text-transform: lowercase;
 	text-transform: capitalize;
-	background-color: none;
-	color: #fff;
 	font-weight: 200 !important;
 }
 
@@ -492,7 +496,8 @@ textarea.input {
 /* Upload Page */
 #api-tags{
 	position: relative;
-	margin: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .upload-header {
@@ -504,14 +509,12 @@ textarea.input {
 
 .upload-header h2 {
 	font-weight: 100;
-	color: #fff;
 	margin: 5px;
 }
 
 #uploadHeaderBtn {
 	transform: translateY(50%);
 	background-color: #000;
-	color: #fff;
 	font-weight: 200;
 	padding-left: 10px;
 	padding-right: 10px;

@@ -18,10 +18,16 @@ $("#file-select").change(function(e) {
     reader.readAsDataURL(file);
     div.appendChild(img);
     $("div#upload-thumbnail").remove();
-    $("input").after(div);
+    $("input#file-select").after(div);
  });
 
 function upload(){
+
+    var loading = document.createElement("p");
+    loading.id = "upload-msg";
+    var loadText = document.createTextNode("Uploading Image...");
+    loading.appendChild(loadText);
+    $("input#file-select").after(loading);
     var file = document.getElementById('file-select').files[0];
     console.log(file);
     var ref = firebase.storage().ref().child(file.name);
@@ -40,6 +46,7 @@ function upload(){
     });
 
     categorize(file, key);
+
 
 }
 
@@ -94,6 +101,7 @@ function categorize(filething, key) {
             var node = document.createTextNode(htmlData);
             text.appendChild(node);
             div.appendChild(text);
+            $("p#upload-msg").remove();
            
             //$('#uploadModal').modal('show'); 
             //alert(JSON.stringify(data["tags"]));
