@@ -1,10 +1,10 @@
 console.log("filterhelper connected");
 
 //loadImageArray();
-//$.get("images/", getImageArray);
+//$.get("images/", loadImageArray);
 
 
-//function loadImageArray(){
+//function loadImageArray(result){
 	firebase.database().ref('images').once('value', function(snapshot) {
 
 	
@@ -12,14 +12,25 @@ console.log("filterhelper connected");
 
 	// define what element should be observed by the observer
 	// and what types of mutations trigger the callback
-		imageData = snapshot.val();
+		var imageData = snapshot.val();
 		var imageArray = [];
+		console.log(imageData);
 
 		//console.log(imageData);
 	//initial display
-		for (var i = 0; i < imageData.length; i++){
+		/*for (var i = 0; i < imageData.length; i++){
 			arrayObject = { filename: imageData[i].imageURL, aspectRatio: imageData[i].aspectRatio};
 			imageArray.push(arrayObject);
+		}*/
+		for (var key in imageData) {
+    		if (imageData.hasOwnProperty(key)) {
+        		//The current property is not a direct property of p
+
+    		//console.log(imageData[key]);
+    		arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
+			imageArray.push(arrayObject);
+    		//Do your logic with the property here
+    	}
 		}
 
 		var pig = new Pig(imageArray, {
@@ -60,11 +71,13 @@ function filter(imageData, tags){
 	var imageArray = [];
 	var skipImg = false;
 	//iterate through each image from the Data
-	for (var i = 0; i < imageData.length; i++){
+	for (var key in imageData){
 		//console.log(tags.values[i]);
 		//console.log(imageData.images[i]);
+		if (imageData.hasOwnProperty(key)) {
+    	
 		if (tags.values.length === 0){
-			arrayObject = { filename: imageData[i].imageURL, aspectRatio: imageData[i].aspectRatio};
+			arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
 			imageArray.push(arrayObject);
 		}
 
@@ -72,9 +85,9 @@ function filter(imageData, tags){
 		for (var j = 0; j < tags.values.length; j++){
 
 			//check if the tag value is in the imageData
-			for (var k = 0; k < imageData[i].tags.length; k++){
-				if (tags.values[j].toLowerCase() === imageData[i].tags[k].toLowerCase()){
-					arrayObject = { filename: imageData[i].imageURL, aspectRatio: imageData[i].aspectRatio};
+			for (var k = 0; k < imageData[key].tags.length; k++){
+				if (tags.values[j].toLowerCase() === imageData[key].tags[k].toLowerCase()){
+					arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
 					imageArray.push(arrayObject);
 					//console.log(arrayObject);
 					//console.log(imageData.images[i]);
@@ -91,6 +104,7 @@ function filter(imageData, tags){
 		if (skipImg){
 			skipImg = false;
 		}
+	}
 	}
 	console.log(imageArray);
 
@@ -118,12 +132,13 @@ function filterAll(imageData, tags){
 	//console.log(tags.values);
 	var imageArray = [];
 	//iterate through each image from the Data
-	for (var i = 0; i < imageData.length; i++){
+	for (var key in imageData){
+		if (imageData.hasOwnProperty(key)) {
 		
 		// if there are no tags set, we display all images
 		// push the current image and continue
 		if (tags.values.length === 0){
-			arrayObject = { filename: imageData[i].imageURL, aspectRatio: imageData[i].aspectRatio};
+			arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
 			imageArray.push(arrayObject);
 			continue;
 		}
@@ -133,9 +148,9 @@ function filterAll(imageData, tags){
 		for (var j = 0; j < tags.values.length; j++){
 
 			//check if the tag value is in the imageData
-			for (var k = 0; k < imageData[i].tags.length; k++){
+			for (var k = 0; k < imageData[key].tags.length; k++){
 
-				if (tags.values[j].toLowerCase() === imageData[i].tags[k].toLowerCase()){
+				if (tags.values[j].toLowerCase() === imageData[key].tags[k].toLowerCase()){
 					// if the tags match, break out of imageData and go to the next taggle.
 					//increment that tag counter
 					counter++;
@@ -146,12 +161,13 @@ function filterAll(imageData, tags){
 			if (j+1 === tags.values.length){
 				//add image if the tag counter is equal to the number of taggles
 				if (counter === tags.values.length){
-					arrayObject = { filename: imageData[i].imageURL, aspectRatio: imageData[i].aspectRatio};
+					arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
 					imageArray.push(arrayObject);
 				}
 				counter = 0;
 			}
 		}
+	}
 	}
 	console.log(imageArray);
 
