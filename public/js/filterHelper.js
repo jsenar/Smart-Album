@@ -6,7 +6,7 @@ loadImageArray();
 var pig;
 function loadImageArray(){
 	firebase.database().ref('images').once('value', function(snapshot) {
-		//$("p#upload-msg").remove();
+		//
 	
 		MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
