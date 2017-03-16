@@ -122,7 +122,8 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 			   upload button -->
                         {{#unless redesign}}
 			<div align="right" class="col-xs-4" id="homescreen-header-btn">
-				<a data-toggle="modal" data-target = "#shareModal" class = "btn-default shareBtn">
+				<a data-intro="You can share photos from here!"
+				data-position="left" data-toggle="modal" data-target = "#shareModal" class = "btn-default shareBtn">
 					<i class="material-icons" style = "color: #000; background-color: #fff">share</i>
 				</a>
 			</div>
@@ -147,10 +148,11 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 		<div class = "row homescreen-header" style="margin-top: 45px; z-index: 1; position: fixed; border-radius: 2px; max-height: 100vh;">
 		<div class = "divider"></div>
 			<div class = "col-xs-10">		
-				<div class = "input textarea clearfix" id="example1"></div>
+				<div data-intro="Search your photos by tags!" class = "input textarea clearfix" id="example1"></div>
 			</div>
 			<div class="col-xs-2" style="margin-top: 10px; float: right; padding-right: 10px;">
-				<a data-toggle="modal" data-target = "#voiceModal" class = "btn-default shareBtn" style="float: right;">
+				<a data-intro="You can also search through your
+				photos with voice input!" data-position="left" data-toggle="modal" data-target = "#voiceModal" class = "btn-default shareBtn" style="float: right;">
 					<i class="material-icons" style = "color: #000; background-color: #fff">keyboard_voice</i>
 				</a>
 			</div>
@@ -187,7 +189,8 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 			</div>
                         
 			<div class = "col-xs-6">
-				<a data-toggle="modal" data-target = "#uploadModal" class="btn btn-default btn-fab"  style = "float: right; background-color: #fff;"><i class="material-icons">add</i></a>
+				<a data-intro="Upload photos from here."
+				data-position="left" data-toggle="modal" data-target = "#uploadModal" class="btn btn-default btn-fab"  style = "float: right; background-color: #fff;"><i class="material-icons">add</i></a>
 			</div>
  	                {{/unless}}
 
@@ -440,6 +443,10 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 </script>
 	<script src="js/shareHelper.js"></script>
 	<script src="js/googleanalytics.js"></script>
+	<script type="text/javascript"> 
+	   introJs().start();
+	   console.log("intro");
+	</script>
         <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
