@@ -7,7 +7,7 @@ var pig;
 function loadImageArray(){
 	firebase.database().ref('images').once('value', function(snapshot) {
 		var val = $("select#tagoption").find("option:selected").val();
-		console.log(val);
+		//console.log(val);
 		$('select#tagoption').change(function () {
     		val = $(this).find("option:selected").val();
     		if (val === "All"){
@@ -16,7 +16,7 @@ function loadImageArray(){
     		else if(val === "Any"){
     			filter(imageData, taggle.getTags());
     		}
-    		console.log(val);
+    		//console.log(val);
 		});
 		//
 	
@@ -127,7 +127,7 @@ function filter(imageData, tags){
 		}
 	}
 	}
-	console.log(imageArray);
+	//console.log(imageArray);
 
 	pig.disable();
 
@@ -195,7 +195,7 @@ function filterAll(imageData, tags){
 			}
 		}
 	}
-	console.log(imageArray);
+	//console.log(imageArray);
 
 	pig.disable();
 
