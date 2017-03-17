@@ -52,6 +52,6 @@ function sendMail() {
 
 function hideModal() {
    var modal = document.querySelector("#shareModal");
-   modal.modal("hide");
+   $("div#shareModal").modal("hide");
 }
 
