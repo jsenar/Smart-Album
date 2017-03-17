@@ -1,6 +1,6 @@
 console.log("shareHelper.js connected");
 //share the filtered images to an email
-var images = document.querySelectorAll("#lightgallery .imagesToFilter .img-responsive");
+//var images = document.querySelectorAll("a.pig-figure");
 // first get the filtered pictures
 var imageURLS = "";
 
@@ -10,19 +10,17 @@ $("#confirmShare").click(hideModal);
 
 // share all pictures currently showing
 function picturesToShare() {
+
    clearImageURLS();
+   var images = document.querySelectorAll("a.pig-figure");
    for (var i = 0; i < images.length; i++) {
-      console.log("image types are " + Object.prototype.toString.call(images[i].getAttribute("src")));
-      console.log("image class is " + imagesToFilter[i].getAttribute("class"));
-      if (imagesToFilter[i].getAttribute("class").indexOf("showItem") >= 0) {
-         console.log("sharing image"); 
-         imageURLS += ("\n\n" + images[i].getAttribute("src"));
-      }
+      imageURLS += ("\n\n" + images[i].getAttribute("src"));
    }
    console.log("sharing these images :" + imageURLS);
 }
 
 function clearImageURLS() {
+   images = "";
    imageURLS = "";
 }
 
