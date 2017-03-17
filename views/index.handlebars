@@ -79,6 +79,12 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 	<div class="container">
 		<div class="row homescreen-header" style="z-index: 1; position: fixed;" >
 			<div align="left" class="col-xs-4" id="homescreen-header-btn">
+			<select data-intro="Customize your search by choosing to filter photos that have either all of searched tags or any of the searched tags!" id="tagoption" class="selectpicker">
+				<optgroup label="Search for photos with:">
+  					<option value="All">All Tags</option>
+  					<option value="Any">Any Tag</option>
+  				</optgroup>
+			</select>
 <!-- 			<span onclick="openNav()">
 				<a class = "btn-default">
 					<i class="material-icons" style = "color: #000; background-color: #fff">search</i>
@@ -146,6 +152,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 		</div>
 		
 		<div class = "row homescreen-header" style="margin-top: 45px; z-index: 1; position: fixed; border-radius: 2px; max-height: 100vh;">
+
 		<div class = "divider"></div>
 			<div class = "col-xs-10">		
 				<div data-intro="Search your photos by tags!" class = "input textarea clearfix" id="example1"></div>
@@ -344,6 +351,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 			document.getElementById("menu").style.width = "0";
 		}
 	</script>
+
 	<script type="text/javascript" src="js/mdb.min.js"></script>
 	<script type="text/javascript" src = "js/bootstrap-material-design.js"></script>
 	<script src="js/fileUpload.js"></script>

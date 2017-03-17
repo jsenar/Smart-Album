@@ -6,6 +6,18 @@ loadImageArray();
 var pig;
 function loadImageArray(){
 	firebase.database().ref('images').once('value', function(snapshot) {
+		var val = $("select#tagoption").find("option:selected").val();
+		console.log(val);
+		$('select#tagoption').change(function () {
+    		val = $(this).find("option:selected").val();
+    		if (val === "All"){
+    			filterAll(imageData, taggle.getTags());
+    		}
+    		else if(val === "Any"){
+    			filter(imageData, taggle.getTags());
+    		}
+    		console.log(val);
+		});
 		//
 	
 		MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
@@ -49,7 +61,12 @@ function loadImageArray(){
 		function(mutations) {
 			mutations.forEach(function(mutation) {
 				if (mutation.type == "childList"){
-					filter(imageData, taggle.getTags());
+					if (val === "All"){
+						filterAll(imageData, taggle.getTags());
+					}
+					else if (val === "Any"){
+						filter(imageData,taggle.getTags());
+					}
 				}
 			})
 		});
@@ -61,6 +78,7 @@ function loadImageArray(){
 		observer.observe(target, config);
 	});
 }
+
 
 //For searching for images with at least one of the searched tags
 function filter(imageData, tags){
@@ -137,43 +155,47 @@ function filterAll(imageData, tags){
 	//iterate through each image from the Data
 	for (var key in imageData){
 		if (imageData.hasOwnProperty(key)) {
+			//console.log("hello");
 		
-		// if there are no tags set, we display all images
-		// push the current image and continue
-		if (tags.values.length === 0){
-			arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
-			imageArray.push(arrayObject);
-			continue;
-		}
+			// if there are no tags set, we display all images
+			// push the current image and continue
+			if (tags.values.length === 0){
+				arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
+				imageArray.push(arrayObject);
+				continue;
+			}
 
-		var counter = 0;
-		//iterate through tag values set in taggle
-		for (var j = 0; j < tags.values.length; j++){
+			var counter = 0;
+			//iterate through tag values set in taggle
+			for (var j = 0; j < tags.values.length; j++){
 
-			//check if the tag value is in the imageData
-			for (var tag in imageData[key].tag){
-				if (imageData[key].tag.hasOwnProperty(tag)){
-				if (tags.values[j].toLowerCase() === tag.toLowerCase()){
-					// if the tags match, break out of imageData and go to the next taggle.
-					//increment that tag counter
-					counter++;
-					break;
+				//check if the tag value is in the imageData
+				for (var tag in imageData[key].tags){
+					if (imageData[key].tags.hasOwnProperty(tag)){
+						if (tags.values[j].toLowerCase() === tag.toLowerCase()){
+						// if the tags match, break out of imageData and go to the next 	taggle.
+						//increment that tag counter
+							//console.log("increment counter");
+							counter++;
+							break;
+						}	
+					}
 				}
-			}
-			}
+				//console.log("taggle loop");
 			//on last taggle
-			if (j+1 === tags.values.length){
+				if (j+1 === tags.values.length){
 				//add image if the tag counter is equal to the number of taggles
-				if (counter === tags.values.length){
-					arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
-					imageArray.push(arrayObject);
+					if (counter === tags.values.length){
+						arrayObject = { filename: imageData[key].imageURL, aspectRatio: imageData[key].aspectRatio};
+						imageArray.push(arrayObject);
+						//console.log(arrayObject)
+					}
+					counter = 0;
 				}
-				counter = 0;
 			}
 		}
 	}
-	}
-	//console.log(imageArray);
+	console.log(imageArray);
 
 	pig.disable();
 
