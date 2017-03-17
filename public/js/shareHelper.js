@@ -3,24 +3,27 @@ console.log("shareHelper.js connected");
 //var images = document.querySelectorAll("a.pig-figure");
 // first get the filtered pictures
 var imageURLS = "";
+var images = document.querySelectorAll("a.pig-figure");
 
-$("#shareBtn").click(picturesToShare);
-$("#applyShare").click(sendMail);
-$("#confirmShare").click(hideModal);
+$("a.shareBtn").click(picturesToShare);
+$("button#applyShare").click(sendMail);
+$("a#confirmShare").click(hideModal);
 
 // share all pictures currently showing
 function picturesToShare() {
 
    clearImageURLS();
-   var images = document.querySelectorAll("a.pig-figure");
+   images = document.querySelectorAll("a.pig-figure");
+   console.log(images);
    for (var i = 0; i < images.length; i++) {
-      imageURLS += ("\n\n" + images[i].getAttribute("src"));
+      imageURLS += ("\n\n" + images[i].getAttribute("href"));
    }
-   console.log("sharing these images :" + imageURLS);
+   console.log(images);
+   console.log(imageURLS);
 }
 
 function clearImageURLS() {
-   images = "";
+   //images = "";
    imageURLS = "";
 }
 
@@ -35,7 +38,8 @@ function sendMail() {
    var link = "mailto:" + escape(user[0].value) + "?subject=" +
 	   escape(subject[0].value) + "&body=" + escape(message[0].value +
 			   "\n") + escape(imageURLS);
-
+   console.log(imageURLS);
+   console.log(images);
    console.log(link);
    var send = document.querySelectorAll("#confirmShare");
    console.log(send[0].getAttribute("href"));
@@ -43,7 +47,7 @@ function sendMail() {
    console.log(send[0].getAttribute("href"));
 
    send[0].setAttribute("style", "color: #0f0");
-
+   console.log("lmao")
 }
 
 function hideModal() {
